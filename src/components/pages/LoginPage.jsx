@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Login = () => {
+const LoginPage = () => {
 	const [inputName, setInputName] = useState('');
 
 	const handleChange = (e) => {
@@ -33,4 +33,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default LoginPage;
