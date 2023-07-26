@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const LoginForm = () => {
 	const [inputName, setInputName] = useState('');
@@ -10,8 +11,13 @@ const LoginForm = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		alert(`bonjour ${inputName}`);
-		setInputName('')
+		setInputName('');
 	};
+
+	const navigateToOrderPage = () => {
+		return <Navigate to="hello" />;
+	};
+
 	return (
 		<form action="submit" onSubmit={() => handleSubmit(event)}>
 			<h1>Bienvenue chez nous !</h1>
@@ -24,7 +30,7 @@ const LoginForm = () => {
 				type="text"
 				placeholder="entrer votre prénom..."
 			/>
-			<button>Accédez à votre espace</button>
+			<button onClick={navigateToOrderPage}>Accédez à votre espace</button>
 		</form>
 	);
 };
