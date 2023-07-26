@@ -7,20 +7,19 @@ const LoginPage = () => {
 		setInputName(e.target.value);
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	const handleSubmit = (event) => {
+		event.preventDefault();
 		inputName !== '' ? alert(`Bonjour ${inputName}`) : '';
 		setInputName('');
 	};
 
 	return (
 		<div>
-			<h2>Bienvenue chez nous !</h2>
-			<form action="submit" onSubmit={() => handleSubmit(event)}>
-				<label htmlFor="name">Connectez-vous</label>
-				<br />
+			<h1>Bienvenue chez nous !</h1>
+			<br />
+			<h2>Connectez-vous</h2>
+			<form action="submit" onSubmit={() => handleSubmit()}>
 				<input
-					id="name"
 					value={inputName}
 					required={true}
 					onChange={() => handleChange(event)}
