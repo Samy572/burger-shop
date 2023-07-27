@@ -6,7 +6,7 @@ const OrderPage = () => {
 
 	return (
 		<>
-			<h1>Hello from {username}</h1>
+			<h1>Bonjour {username}</h1>
 			<button>
 				<Link to="/">{"Retourner à la page d'accueil"}</Link>
 			</button>
