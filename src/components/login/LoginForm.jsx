@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import RedirectButton from '../RedirectButton';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
 	const [inputName, setInputName] = useState('');
-
-	const name = 'Acceder à votre espace';
+	const navigate = useNavigate();
 
 	const handleChange = (event) => {
 		setInputName(event.target.value);
@@ -12,6 +11,7 @@ const LoginForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		navigate(`/order/${inputName}`);
 	};
 
 	return (
@@ -26,7 +26,7 @@ const LoginForm = () => {
 				type="text"
 				placeholder="entrer votre prénom..."
 			/>
-			<RedirectButton props={name} path={`/order/${inputName}`} />
+			<button>Acceder à votre espace</button>
 		</form>
 	);
 };

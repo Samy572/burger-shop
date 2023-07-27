@@ -1,13 +1,15 @@
-import RedirectButton from '../RedirectButton';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 const OrderPage = () => {
-	const name = "Retourner à la page d'accueil";
-	const params = useParams();
+	const { username } = useParams();
 
 	return (
 		<>
-			<h1>Hello from {params.id}</h1>
-			<RedirectButton props={name} path={'/'} />
+			<h1>Hello from {username}</h1>
+			<button>
+				<Link to="/">{"Retourner à la page d'accueil"}</Link>
+			</button>
 		</>
 	);
 };

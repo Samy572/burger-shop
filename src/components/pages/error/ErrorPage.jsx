@@ -1,11 +1,11 @@
-import RedirectButton from '../RedirectButton';
-
+import { Link } from 'react-router-dom';
 const ErrorPage = () => {
-	const name = 'Déconnexion';
 	return (
 		<>
-			<h2>Error Page</h2>
-			<RedirectButton props={name} path={'/'} />
+			<h1>Error Page</h1>
+			<button>
+				<Link to="/">Déconnexion</Link>
+			</button>
 		</>
 	);
 };
