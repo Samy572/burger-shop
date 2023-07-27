@@ -1,7 +1,7 @@
 import RedirectButton from '../RedirectButton';
 import { useParams } from 'react-router-dom';
 const OrderPage = () => {
-	const name = "Retourner à la page d'acuueil";
+	const name = "Retourner à la page d'accueil";
 	const params = useParams();
 
 	return (
