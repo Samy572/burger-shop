@@ -1,10 +1,11 @@
-import LogoutButton from '../logoutButton';
+import RedirectButton from '../RedirectButton';
 
 const ErrorPage = () => {
+	const name = 'Déconnexion';
 	return (
 		<>
 			<h2>Error Page</h2>
-			<LogoutButton />
+			<RedirectButton props={name} path={'/'} />
 		</>
 	);
 };

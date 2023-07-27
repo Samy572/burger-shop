@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import RedirectButton from '../RedirectButton';
 
 const LoginForm = () => {
 	const [inputName, setInputName] = useState('');
+
+	const name = 'Acceder à votre espace';
 
 	const handleChange = (event) => {
 		setInputName(event.target.value);
@@ -10,12 +12,6 @@ const LoginForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		alert(`bonjour ${inputName}`);
-		setInputName('');
-	};
-
-	const navigateToOrderPage = () => {
-		return <Navigate to="hello" />;
 	};
 
 	return (
@@ -30,7 +26,7 @@ const LoginForm = () => {
 				type="text"
 				placeholder="entrer votre prénom..."
 			/>
-			<button onClick={navigateToOrderPage}>Accédez à votre espace</button>
+			<RedirectButton props={name} path={`/order/${inputName}`} />
 		</form>
 	);
 };
