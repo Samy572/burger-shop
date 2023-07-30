@@ -13,25 +13,21 @@ const LoginPage = () => {
 
 const LoginPageStyled = styled.div`
 	height: 100vh;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-	::before {
+	background: url('/img/F03-burger-background.jpg');
+	background-size: cover;
+	background-position: center;
+	&:before {
 		content: '';
-		width: 100%;
-		height: 100vh;
-		background: url('/img/F03-burger-background.jpg') rgba(0, 0, 0, 0.7);
-		background-size: cover;
-		background-position: center;
-		background-blend-mode: darken;
 		position: absolute;
-		top: 0;
-		left: 0;
-		left: 0;
-		right: 0;
-		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.3);
+		z-index: 1;
 	}
 `;
 

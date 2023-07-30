@@ -35,6 +35,7 @@ const LoginForm = () => {
 
 const LoginFormStyled = styled.form`
 	background-color: green;
+	height: auto;
 `;
 
 export default LoginForm;
