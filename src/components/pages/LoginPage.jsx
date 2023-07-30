@@ -1,16 +1,23 @@
 import LoginForm from '../login/LoginForm';
+import styled from 'styled-components';
+import Logo from '../reusable-ui/Logo';
 
 const LoginPage = () => {
 	return (
-		<body>
-			<h1>
-				CRAZEE
-				<img src="/public/img/F03 logo-orange.png" alt="logo burger" />
-				BURGER
-			</h1>
+		<LoginPageStyled>
+			<Logo />
 			<LoginForm />
-		</body>
+		</LoginPageStyled>
 	);
 };
+
+const LoginPageStyled = styled.div`
+	background-color: red;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
 
 export default LoginPage;
