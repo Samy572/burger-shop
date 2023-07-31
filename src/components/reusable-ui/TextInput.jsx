@@ -24,6 +24,7 @@ const InputStyled = styled.div`
 		border: none;
 		font-size: 15px;
 		color: #17161a;
+		width:100%;
 	}
 	input:focus::placeholder {
 		color: lightgrey;
