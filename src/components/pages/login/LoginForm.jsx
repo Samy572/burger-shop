@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronForward } from 'react-icons/io5';
 import { BsPersonCircle } from 'react-icons/bs';
-import Input from '../../reusable-ui/Input';
+import TextInput from '../../reusable-ui/TextInput';
 import styled from 'styled-components';
 
 const LoginForm = () => {
@@ -23,13 +23,12 @@ const LoginForm = () => {
 			<h1>Bienvenue chez nous !</h1>
 			<hr />
 			<h2>Connectez-vous</h2>
-			<Input
+			<TextInput
 				value={inputValue}
 				onChange={handleChange}
 				Icon={<BsPersonCircle className="icon" />}
 				placeholder={'entrer votre prénom...'}
 				required
-				type="text"
 			/>
 			<button className="button-with-icon">
 				<span>Acceder à votre espace</span>
