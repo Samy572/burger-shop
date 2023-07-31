@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonCircle } from 'react-icons/bs';
 import { IoChevronForward } from 'react-icons/io5';
+import { BsPersonCircle } from 'react-icons/bs';
+import Input from '../../reusable-ui/Input';
 import styled from 'styled-components';
 
 const LoginForm = () => {
-	const [inputName, setInputName] = useState('');
+	const [inputValue, setInputValue] = useState('');
 	const navigate = useNavigate();
 
 	const handleChange = (event) => {
-		setInputName(event.target.value);
+		setInputValue(event.target.value);
 	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		navigate(`/order/${inputName}`);
+		navigate(`/order/${inputValue}`);
 	};
 
 	return (
@@ -22,16 +23,14 @@ const LoginForm = () => {
 			<h1>Bienvenue chez nous !</h1>
 			<hr />
 			<h2>Connectez-vous</h2>
-			<div className="input-with-icon">
-				<BsPersonCircle className="icon" />
-				<input
-					value={inputName}
-					required={true}
-					onChange={() => handleChange(event)}
-					type="text"
-					placeholder="entrer votre prénom..."
-				/>
-			</div>
+			<Input
+				value={inputValue}
+				onChange={handleChange}
+				Icon={<BsPersonCircle className="icon" />}
+				placeholder={'entrer votre prénom...'}
+				required
+				type="text"
+			/>
 			<button className="button-with-icon">
 				<span>Acceder à votre espace</span>
 				<IoChevronForward className="icon" />
@@ -67,28 +66,7 @@ const LoginFormStyled = styled.form`
 		text-align: center;
 		font-size: 36px;
 	}
-	.input-with-icon {
-		background: #fff;
-		border-radius: 5px;
-		display: flex;
-		align-items: center;
-		padding: 18px 24px;
-		margin: 18px 0;
-		.icon {
-			font-size: 15px;
-			margin-right: 8px;
-			color: #93a2b1;
-		}
-		input {
-			border: none;
-			font-size: 15px;
-			color: #17161a;
-		}
-		input:focus::placeholder {
-			color: lightgrey;
-			
-		}
-	}
+	
 	.button-with-icon {
 		width: 100%;
 		border: 1px solid red;
