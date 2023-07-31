@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export default function Logo() {
 	return (
@@ -15,7 +15,7 @@ const LogoStyled = styled.div`
 	display: flex;
 	align-items: center;
 	transform: scale(2.5);
-	padding-bottom: 30px;
+	z-index: 2;
 
 	h1 {
 		display: flex;
