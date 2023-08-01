@@ -1,23 +1,15 @@
 import styled from 'styled-components';
+import Navbar from './Navbar';
 import { useParams } from 'react-router-dom';
-import { BsPersonCircle } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import Main from './Main';
 
 const OrderPage = () => {
 	const { username } = useParams();
 	return (
 		<OrderPageStyled>
 			<div className="container">
-				<div className="navBar">
-					<h1>
-						Hey <span className="userName">{username}</span>
-					</h1>
-					<button className="disconect">
-						<Link to="/">{'Se déconnecter'}</Link>
-					</button>
-					<BsPersonCircle className="icon" />
-				</div>
-				<main>main</main>
+				<Navbar username={username} />
+				<Main />
 			</div>
 		</OrderPageStyled>
 	);
@@ -37,14 +29,5 @@ const OrderPageStyled = styled.div`
 		width: 95%;
 		display: flex;
 		flex-direction: column;
-	}
-
-	.navBar {
-		height: 10vh;
-		background-color: blue;
-	}
-	main {
-		background-color: green;
-		flex: 1;
 	}
 `;
