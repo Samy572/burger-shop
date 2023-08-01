@@ -16,7 +16,6 @@ const LogoStyled = styled.div`
 	display: flex;
 	align-items: center;
 	transform: scale(2.5);
-	z-index: 2;
 
 	h1 {
 		display: flex;
@@ -35,5 +34,11 @@ const LogoStyled = styled.div`
 		height: 60px;
 		width: 80px;
 		margin: 0 ${theme.gridUnit / 2}px;
+	}
+	.navBarLogo {
+		transform: scale(0);
+		h1 {
+			font-size: 16px;
+		}
 	}
 `;
