@@ -4,7 +4,7 @@ import LoginForm from '../login/LoginForm';
 const LoginPage = () => {
 	return (
 		<LoginPageStyled>
-			<Logo />
+			<Logo className={'logo-login-page'} />
 			<LoginForm />
 		</LoginPageStyled>
 	);
@@ -26,6 +26,10 @@ const LoginPageStyled = styled.div`
 		width: 100%;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.4);
+	}
+	// Props className
+	.logo-login-page {
+		transform: scale(2.5);
 	}
 `;
 
