@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-export default function Logo() {
+export default function Logo({ className, onClick }) {
 	return (
-		<LogoStyled>
+		<LogoStyled className={className} onClick={onClick}>
 			<h1> CRAZY</h1>
 			<img src="/img/F03 logo-orange.png" alt="logo-crazee-burger" />
 			<h1> BURGER</h1>
@@ -15,8 +15,6 @@ const LogoStyled = styled.div`
 	color: ${theme.colors.white};
 	display: flex;
 	align-items: center;
-	transform: scale(2.5);
-	z-index: 2;
 
 	h1 {
 		display: flex;
@@ -35,5 +33,11 @@ const LogoStyled = styled.div`
 		height: 60px;
 		width: 80px;
 		margin: 0 ${theme.gridUnit / 2}px;
+	}
+	.navBarLogo {
+		transform: scale(0);
+		h1 {
+			font-size: 16px;
+		}
 	}
 `;
