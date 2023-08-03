@@ -17,7 +17,7 @@ const LoginPageStyled = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: url('/img/F03-burger-background.jpg');
+	background: url('/img/burger-and-fries-background.jpg');
 	background-size: cover;
 	background-position: center;
 	&:before {
