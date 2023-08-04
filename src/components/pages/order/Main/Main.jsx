@@ -20,7 +20,7 @@ const MainStyled = styled.div`
 	box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 	display: grid;
 	grid-template-columns: 1fr;
-
+	
 	/* .basket {
 	} */
 `;
