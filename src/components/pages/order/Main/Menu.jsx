@@ -1,21 +1,23 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import Card from '../../../reusable-ui/Card';
 import { fakeMenu2 } from '../../../../data/fakeMenu';
 import { theme } from '../../../../theme';
-import Product from './Product';
+import { formatPrice } from '../../../../utils/math';
 
 export default function Menu() {
 	const [menu, setmenu] = useState(fakeMenu2);
 
 	return (
+		// Map destructuring menu
 		<MenuStyled>
-			{menu.map((produit, i) => {
+			{menu.map(({ id, imageSource, price, title }) => {
 				return (
-					<Product
-						key={i}
-						title={produit.title}
-						imageSource={produit.imageSource}
-						price={produit.price}
+					<Card
+						key={id}
+						title={title}
+						imageSource={imageSource}
+						leftDescription={formatPrice(price)}
 					/>
 				);
 			})}

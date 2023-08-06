@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { theme } from '../../../../theme';
-import PrimaryButton from '../../../reusable-ui/PrimaryButton';
-import { formatPrice } from '../../../../utils/math';
-export default function Product({ title, imageSource, price }) {
+import PrimaryButton from './PrimaryButton';
+import { theme } from '../../theme';
+
+export default function Product({ title, imageSource, leftDescription }) {
 	return (
 		<ProductStyled className="produit">
 			<div className="image">
@@ -11,7 +11,7 @@ export default function Product({ title, imageSource, price }) {
 			<div className="text-info">
 				<div className="title">{title}</div>
 				<div className="description">
-					<div className="left-description">{formatPrice(price)}</div>
+					<div className="left-description">{leftDescription}</div>
 					<div className="right-description">
 						<PrimaryButton className={'primary-button'} label={'Ajouter'} />
 					</div>
