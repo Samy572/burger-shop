@@ -31,24 +31,5 @@ const MenuStyled = styled.div`
 	overflow-y: auto;
 	padding: 50px 50px 150px;
 	justify-items: center;
-	flex-wrap: wrap;
 	box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 20%) inset;
-	.produit {
-		background-color: red;
-		height: 330px;
-		width: 240px;
-		.image {
-			border: fuchsia 2px solid;
-			width: 100px;
-			height: auto;
-		}
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-		.description {
-			border: solid 2px fuchsia;
-		}
-	}
 `;
