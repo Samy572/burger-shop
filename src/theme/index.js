@@ -43,7 +43,7 @@ const fonts = {
 		P5: '48px',
 		P6: '60px',
 	},
-	weight: {
+	weights: {
 		light: 300,
 		regular: 400,
 		medium: 500,
@@ -52,7 +52,6 @@ const fonts = {
 		heavy: 800,
 	},
 };
-
 const gridUnit = 8;
 const borderRadius = {
 	subtle: 1,
@@ -60,6 +59,7 @@ const borderRadius = {
 	extraRound: '15px',
 	circle: '50%',
 };
+
 const shadows = {};
 
 export const theme = {

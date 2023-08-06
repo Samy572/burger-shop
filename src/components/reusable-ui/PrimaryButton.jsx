@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-export default function Button({ Icon, label }) {
+export default function Button({ Icon, label, className }) {
 	return (
-		<PrimaryStyledButton>
+		<PrimaryStyledButton className={className}>
 			<span>{label}</span>
 			{Icon && Icon}
 		</PrimaryStyledButton>
@@ -23,7 +23,7 @@ const PrimaryStyledButton = styled.button`
 	padding: 18px 24px;
 	border-radius: ${theme.borderRadius.round};
 	font-size: ${theme.fonts.size.P0};
-	font-weight: ${theme.fonts.weight.heavy};
+	font-weight: ${theme.fonts.weights.heavy};
 	color: ${theme.colors.white};
 	background-color: ${theme.colors.orange};
 	border: 1px solid ${theme.colors.orange};
