@@ -9,7 +9,7 @@ export default function Menu() {
 	const [menu, setmenu] = useState(fakeMenu2);
 
 	return (
-		// Map destructuring menu
+		// Map destructuring menu + hydratation du component
 		<MenuStyled>
 			{menu.map(({ id, imageSource, price, title }) => {
 				return (
