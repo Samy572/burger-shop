@@ -4,15 +4,25 @@ import { theme } from '../../theme';
 // 	isChecked,
 // 	onToggle,
 
-export default function ToggleButton({ labelIfChecked, labelIfUnchecked }) {
+export default function ToggleButton({
+	labelIfChecked,
+	labelIfUnchecked,
+	isChecked,
+	onToggle,
+	backgroundCustom,
+	colorCustom,
+}) {
 	return (
-		<ToggleButtonStyled>
+		<ToggleButtonStyled
+			backgroundCustom={backgroundCustom}
+			colorCustom={colorCustom}
+		>
 			<input
 				type="checkbox"
 				className="toggle"
 				id="rounded"
-				// checked={isChecked}
-				// onChange={onToggle}
+				checked={isChecked}
+				onChange={onToggle}
 			/>
 			<label
 				htmlFor="rounded"
@@ -28,7 +38,6 @@ const ToggleButtonStyled = styled.div`
 	/* border: 1px solid red; */
 
 	display: flex;
-	margin-right: ${theme.spacing.xl};
 	input[type='checkbox'] {
 		// Hides the square box but keeps the core "toggle functionality"
 		&.toggle {
@@ -86,7 +95,10 @@ const ToggleButtonStyled = styled.div`
 		}
 
 		&.toggle:not(:checked) + label {
-			background-color: ${theme.colors.background_dark};
+			background-color: ${(props) =>
+				props.backgroundCustom
+					? props.backgroundCustom
+					: theme.colors.background_white};
 			/* text-align: right; */
 		}
 
@@ -96,7 +108,8 @@ const ToggleButtonStyled = styled.div`
 			right: 8px;
 			left: auto;
 			opacity: 1;
-			color: ${theme.colors.primary};
+			color: ${(props) =>
+				props.colorCustom ? props.colorCustom : theme.colors.dark};
 			font-weight: ${theme.fonts.weights.bold};
 		}
 

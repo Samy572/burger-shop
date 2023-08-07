@@ -24,6 +24,7 @@ export default function Profile({ username }) {
 }
 
 const ProfileStyled = styled.div`
+	padding-left: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
