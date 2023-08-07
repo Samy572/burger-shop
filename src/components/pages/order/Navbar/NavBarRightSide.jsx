@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Profile from './Profile';
-import NavbarRightSideIncomplet from './NavbarRightSideIncomplet';
 import ToggleButton from '../../../reusable-ui/ToggleButton';
 import { theme } from '../../../../theme';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
+import AdminToast from './AdminToast';
 
 export default function NavBarRightSide({ username }) {
 	const [isModeAdmin, setisModeAdmin] = useState(false);
@@ -36,7 +36,7 @@ export default function NavBarRightSide({ username }) {
 			/>
 			{/* <NavbarRightSideIncomplet /> */}
 			<Profile username={username} />
-			<ToastContainer className="toaster" bodyClassName="body-toast" />
+			<AdminToast />
 		</NavBarRightSideStyled>
 	);
 }
@@ -47,19 +47,5 @@ const NavBarRightSideStyled = styled.div`
 	padding-right: 50px;
 	.toaster {
 		max-width: 300px;
-	}
-
-	.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-		background: ${theme.colors.background_dark};
-	}
-
-	.body-toast {
-		.Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-			margin-right: 20px;
-			margin-left: 5px;
-		}
-		div {
-			line-height: 1.3em;
-		}
 	}
 `;

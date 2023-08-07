@@ -7,7 +7,6 @@ import { theme } from '../../theme';
 export default function ToggleButton({
 	labelIfChecked,
 	labelIfUnchecked,
-	isChecked,
 	onToggle,
 	backgroundCustom,
 	colorCustom,
@@ -21,7 +20,6 @@ export default function ToggleButton({
 				type="checkbox"
 				className="toggle"
 				id="rounded"
-				checked={isChecked}
 				onChange={onToggle}
 			/>
 			<label
