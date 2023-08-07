@@ -4,13 +4,11 @@ import { ToastContainer } from 'react-toastify';
 
 export default function AdminToast() {
 	return (
-		<AdminToastStyled>
-			<ToastContainer className="toaster" bodyClassName="body-toast" />
-		</AdminToastStyled>
+		<ToastContainerStyled className="toaster" bodyClassName="body-toast" />
 	);
 }
 
-const AdminToastStyled = styled.div`
+const ToastContainerStyled = styled(ToastContainer)`
 	.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
 		background: ${theme.colors.background_dark};
 	}
