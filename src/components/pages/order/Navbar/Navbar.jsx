@@ -8,6 +8,7 @@ export default function Navbar({ username }) {
 	return (
 		<NavBarStyled>
 			<Logo className={'logo-order-page'} onClick={refreshPage} />
+
 			<NavBarRightSide username={username} />
 		</NavBarStyled>
 	);
