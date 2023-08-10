@@ -25,19 +25,19 @@ const PrimaryStyledButton = styled.button`
 	font-size: ${theme.fonts.size.P0};
 	font-weight: ${theme.fonts.weights.heavy};
 	color: ${theme.colors.white};
-	background-color: ${theme.colors.orange};
-	border: 1px solid ${theme.colors.orange};
+	background-color: ${theme.colors.primary};
+	border: 1px solid ${theme.colors.primary};
 
 	&:hover:not(:disabled) {
 		background-color: ${theme.colors.white};
-		color: ${theme.colors.orange};
+		color: ${theme.colors.primary};
 		border: ${theme.borderRadius.subtle} solid ${theme.colors.orange};
 		transition: all 200ms ease-out;
 	}
 	&:active {
 		color: ${theme.colors.white};
-		background-color: ${theme.colors.orange};
-		border: 1px solid ${theme.colors.orange};
+		background-color: ${theme.colors.primary};
+		border: 1px solid ${theme.colors.primary};
 	}
 	&:disabled {
 		opacity: 0.5;
