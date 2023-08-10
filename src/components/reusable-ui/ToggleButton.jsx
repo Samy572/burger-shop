@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-// 	isChecked,
-// 	onToggle,
-
 export default function ToggleButton({
 	labelIfChecked,
 	labelIfUnchecked,
 	onToggle,
-	backgroundCustom,
-	colorCustom,
+	backgroundcustom,
+	colorcustom,
 }) {
 	return (
 		<ToggleButtonStyled
-			backgroundCustom={backgroundCustom}
-			colorCustom={colorCustom}
+			backgroundcustom={backgroundcustom}
+			colorcustom={colorcustom}
 		>
 			<input
 				type="checkbox"
@@ -94,8 +91,8 @@ const ToggleButtonStyled = styled.div`
 
 		&.toggle:not(:checked) + label {
 			background-color: ${(props) =>
-				props.backgroundCustom
-					? props.backgroundCustom
+				props.backgroundcustom
+					? props.backgroundcustom
 					: theme.colors.background_white};
 			/* text-align: right; */
 		}
@@ -107,7 +104,7 @@ const ToggleButtonStyled = styled.div`
 			left: auto;
 			opacity: 1;
 			color: ${(props) =>
-				props.colorCustom ? props.colorCustom : theme.colors.dark};
+				props.colorcustom ? props.colorcustom : theme.colors.dark};
 			font-weight: ${theme.fonts.weights.bold};
 		}
 

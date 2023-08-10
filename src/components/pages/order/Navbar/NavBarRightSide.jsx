@@ -31,8 +31,8 @@ export default function NavBarRightSide({ username }) {
 				labelIfChecked={'Désactiver le mode admin'}
 				labelIfUnchecked={'Activer le mode admin'}
 				onToggle={displayToast}
-				backgroundCustom={theme.colors.background_dark}
-				colorCustom={theme.colors.primary}
+				backgroundcustom={theme.colors.background_dark}
+				colorcustom={theme.colors.primary}
 			/>
 			{/* <NavbarRightSideIncomplet /> */}
 			<Profile username={username} />
