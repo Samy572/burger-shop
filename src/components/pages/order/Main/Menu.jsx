@@ -27,8 +27,7 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 	grid-row-gap: 60px;
 	background-color: ${theme.colors.background_white};
 	overflow-y: scroll;
