@@ -22,7 +22,6 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-	border: solid 3px green;
 	height: calc(95vh - 10vh);
 	background-color: ${theme.colors.white};
 	border-bottom-right-radius: ${theme.borderRadius.extraRound};
