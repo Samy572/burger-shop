@@ -39,5 +39,8 @@ const TabStyled = styled.button`
 
 	.label {
 		margin-left: 13px;
+		&:hover {
+			text-underline-offset: 3px;
+		}
 	}
 `;

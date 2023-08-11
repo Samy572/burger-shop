@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import Profile from './Profile';
-import ToggleButton from '../../../reusable-ui/ToggleButton.jsx'
-import { theme } from '../../../../theme';
-import { toast } from 'react-toastify';
+import ToggleButton from '../../../reusable-ui/ToggleButton.jsx';
 import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { theme } from '../../../../theme';
 import AdminToast from './AdminToast';
 import OrderContext from '../../../../context/OrderContext';
 import { useContext } from 'react';
