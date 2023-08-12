@@ -10,6 +10,7 @@ const OrderPage = () => {
 	const [isCollapsed, setisCollapsed] = useState(false);
 	const [isAddSelected, setisAddSelected] = useState(false);
 	const [isEditSelected, setisEditSelected] = useState(true);
+	const [currentTabSelected, setcurrentTabSelected] = useState('add');
 
 	const orderContextValue = {
 		isModeAdmin,
@@ -20,6 +21,8 @@ const OrderPage = () => {
 		setisAddSelected,
 		isEditSelected,
 		setisEditSelected,
+		currentTabSelected,
+		setcurrentTabSelected,
 	};
 	return (
 		<OrderContext.Provider value={orderContextValue}>
