@@ -8,8 +8,7 @@ import OrderContext from '../../../context/OrderContext';
 const OrderPage = () => {
 	const [isModeAdmin, setisModeAdmin] = useState(false);
 	const [isCollapsed, setisCollapsed] = useState(false);
-	const [isAddSelected, setisAddSelected] = useState(false);
-	const [isEditSelected, setisEditSelected] = useState(true);
+
 	const [currentTabSelected, setcurrentTabSelected] = useState('add');
 
 	const orderContextValue = {
@@ -17,10 +16,7 @@ const OrderPage = () => {
 		setisModeAdmin,
 		isCollapsed,
 		setisCollapsed,
-		isAddSelected,
-		setisAddSelected,
-		isEditSelected,
-		setisEditSelected,
+
 		currentTabSelected,
 		setcurrentTabSelected,
 	};

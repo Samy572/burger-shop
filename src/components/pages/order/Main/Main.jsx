@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import OrderContext from '../../../../context/OrderContext';
 
 export default function Main() {
-	const { isModeAdmin, setisModeAdmin } = useContext(OrderContext);
+	const { isModeAdmin } = useContext(OrderContext);
 	return (
 		<MainStyled>
 			{/* <div className="basket">
