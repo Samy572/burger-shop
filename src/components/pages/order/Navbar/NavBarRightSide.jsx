@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import Profile from './Profile';
-import ToggleButton from '../../../reusable-ui/ToggleButton';
-import { theme } from '../../../../theme';
-import { toast } from 'react-toastify';
+import ToggleButton from '../../../reusable-ui/ToggleButton.jsx';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { theme } from '../../../../theme';
 import AdminToast from './AdminToast';
+import OrderContext from '../../../../context/OrderContext';
+import { useContext } from 'react';
 
-export default function NavBarRightSide({ username }) {
-	const [isModeAdmin, setisModeAdmin] = useState(false);
+export default function NavBarRightSide() {
+	const { isModeAdmin, setisModeAdmin } = useContext(OrderContext);
 	const displayToast = () => {
 		if (!isModeAdmin) {
 			toast.info('Mode admin activé', {
@@ -18,7 +19,7 @@ export default function NavBarRightSide({ username }) {
 				hideProgressBar: false,
 				closeOnClick: true,
 				pauseOnHover: true,
-				draggable: true,
+				draggable: false,
 				progress: undefined,
 			});
 		}
@@ -35,7 +36,7 @@ export default function NavBarRightSide({ username }) {
 				colorCustom={theme.colors.primary}
 			/>
 			{/* <NavbarRightSideIncomplet /> */}
-			<Profile username={username} />
+			<Profile />
 			<AdminToast />
 		</NavBarRightSideStyled>
 	);

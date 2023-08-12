@@ -93,10 +93,7 @@ const ToggleButtonStyled = styled.div`
 		}
 
 		&.toggle:not(:checked) + label {
-			background-color: ${(props) =>
-				props.backgroundCustom
-					? props.backgroundCustom
-					: theme.colors.background_white};
+			background-color: ${(props) => props.backgroundCustom};
 			/* text-align: right; */
 		}
 
@@ -106,8 +103,7 @@ const ToggleButtonStyled = styled.div`
 			right: 8px;
 			left: auto;
 			opacity: 1;
-			color: ${(props) =>
-				props.colorCustom ? props.colorCustom : theme.colors.dark};
+			color: ${(props) => props.colorCustom};
 			font-weight: ${theme.fonts.weights.bold};
 		}
 

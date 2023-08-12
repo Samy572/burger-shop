@@ -27,11 +27,12 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 	grid-row-gap: 60px;
 	background-color: ${theme.colors.background_white};
-	overflow-y: auto;
+	overflow-y: scroll;
 	padding: 50px 50px 150px;
 	justify-items: center;
 	box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 20%) inset;
+	overflow-y: scroll;
 `;
