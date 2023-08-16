@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { theme } from '../../../theme';
 
 const LoginForm = () => {
-	const [inputValue, setInputValue] = useState('');
+	const [inputValue, setInputValue] = useState('Sam');
 	const navigate = useNavigate();
 
 	const handleChange = (event) => {
