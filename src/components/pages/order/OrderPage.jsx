@@ -6,7 +6,7 @@ import { useState } from 'react';
 import OrderContext from '../../../context/OrderContext';
 
 const OrderPage = () => {
-	const [isModeAdmin, setisModeAdmin] = useState(false);
+	const [isModeAdmin, setisModeAdmin] = useState(true);
 	const [isCollapsed, setisCollapsed] = useState(false);
 
 	const [currentTabSelected, setcurrentTabSelected] = useState('add');
