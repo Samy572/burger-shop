@@ -1,29 +1,60 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext';
 
 export default function AddForm() {
-	const { handleAdd } = useContext(OrderContext);
+	const EMPTY_PRODUCT = {
+		id: '',
+		title: 'New product',
+		imageSource: '',
+		price: 0,
+	};
 
-	const newProduct = {
-		id: new Date().getTime(),
-		title: 'Nouveau Produit',
-		imageSource:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwzYGA2SwVNsiwdDN4ab82FsbZQbgmVzqFiE5nqeWe-9f64arMO3kK4Lk932uEzh922s4&usqp=CAU',
-		price: 2.5,
+	const { handleAdd } = useContext(OrderContext);
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+
+	const newProductToAdd = {
+		...newProduct,
+		// Unique id
+		id: crypto.randomUUID(),
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		handleAdd(newProduct);
+		handleAdd(newProductToAdd);
 	};
+
+	const handleChange = (e) => {
+		// dynamically proprety
+		const { name, value } = e.target;
+		setNewProduct({ ...newProduct, [name]: value });
+	};
+
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
 			<div className="image-preview">image-preview</div>
 			<div className="input-fields">
-				<input type="text" placeholder="Nom" />
-				<input type="text" placeholder="Image url" />
-				<input type="text" placeholder="Prix" />
+				<input
+					name="title"
+					onChange={handleChange}
+					value={newProduct.title}
+					type="text"
+					placeholder="Nom"
+				/>
+				<input
+					name="imageSource"
+					onChange={handleChange}
+					value={newProduct.imageSource}
+					type="text"
+					placeholder="Image url"
+				/>
+				<input
+					name="price"
+					onChange={handleChange}
+					value={newProduct.price ? newProduct.price : ''}
+					type="text"
+					placeholder="Prix"
+				/>
 			</div>
 
 			<button className="submit-button">Submit product</button>

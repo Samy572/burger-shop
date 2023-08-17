@@ -27,7 +27,7 @@ const OrderPage = () => {
 		currentTabSelected,
 		setcurrentTabSelected,
 		menu,
-		setMenu,
+		// setMenu,
 		handleAdd,
 	};
 
