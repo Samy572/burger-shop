@@ -7,6 +7,7 @@ import { useContext } from 'react';
 
 export default function Menu() {
 	const { menu } = useContext(OrderContext);
+	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 	return (
 		// Map destructuring menu + hydratation du component
 		<MenuStyled>
@@ -15,7 +16,7 @@ export default function Menu() {
 					<Card
 						key={id}
 						title={title}
-						imageSource={imageSource}
+						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						leftDescription={formatPrice(price)}
 					/>
 				);
