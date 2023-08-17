@@ -1,17 +1,19 @@
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext';
+import { FiCheck } from 'react-icons/fi';
 
 export default function AddForm() {
 	const EMPTY_PRODUCT = {
 		id: '',
-		title: 'New product',
+		title: '',
 		imageSource: '',
 		price: 0,
 	};
 
 	const { handleAdd } = useContext(OrderContext);
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+	const [isSubmited, setisSubmited] = useState(false);
 
 	const newProductToAdd = {
 		...newProduct,
@@ -22,6 +24,14 @@ export default function AddForm() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		handleAdd(newProductToAdd);
+		setNewProduct(EMPTY_PRODUCT);
+		displaySucessMessage();
+	};
+	const displaySucessMessage = () => {
+		setisSubmited(true);
+		setTimeout(() => {
+			setisSubmited(false);
+		}, 2000);
 	};
 
 	const handleChange = (e) => {
@@ -45,14 +55,14 @@ export default function AddForm() {
 					onChange={handleChange}
 					value={newProduct.title}
 					type="text"
-					placeholder="Nom"
+					placeholder="Nom du produit"
 				/>
 				<input
 					name="imageSource"
 					onChange={handleChange}
 					value={newProduct.imageSource}
 					type="text"
-					placeholder="Image url"
+					placeholder="Lien url de l'image"
 				/>
 				<input
 					name="price"
@@ -63,7 +73,17 @@ export default function AddForm() {
 				/>
 			</div>
 
-			<button className="submit-button">Submit product</button>
+			<div className="submit-button">
+				<button>Submit product</button>
+				{isSubmited && (
+					<div className="submit-message">
+						<span>
+							{' '}
+							<FiCheck /> Ajouté avec succès !
+						</span>
+					</div>
+				)}
+			</div>
 		</AddFormStyled>
 	);
 }
@@ -97,8 +117,12 @@ const AddFormStyled = styled.form`
 	.submit-button {
 		display: grid;
 		background: green;
-		grid-area: 4/-2;
-		width: 50%;
+		grid-area: 4/-2/-1/-1;
+		display: flex;
+
 		align-items: center;
+		button {
+			width: 50%;
+		}
 	}
 `;
