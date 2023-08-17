@@ -1,8 +1,24 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import OrderContext from '../../../../../../context/OrderContext';
 
 export default function AddForm() {
+	const { handleAdd } = useContext(OrderContext);
+
+	const newProduct = {
+		id: new Date().getTime(),
+		title: 'Nouveau Produit',
+		imageSource:
+			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwzYGA2SwVNsiwdDN4ab82FsbZQbgmVzqFiE5nqeWe-9f64arMO3kK4Lk932uEzh922s4&usqp=CAU',
+		price: 2.5,
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		handleAdd(newProduct);
+	};
 	return (
-		<AddFormStyled>
+		<AddFormStyled onSubmit={handleSubmit}>
 			<div className="image-preview">image-preview</div>
 			<div className="input-fields">
 				<input type="text" placeholder="Nom" />
@@ -10,7 +26,7 @@ export default function AddForm() {
 				<input type="text" placeholder="Prix" />
 			</div>
 
-			<button className="submit-button">submit button</button>
+			<button className="submit-button">Submit product</button>
 		</AddFormStyled>
 	);
 }

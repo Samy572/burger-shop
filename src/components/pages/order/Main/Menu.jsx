@@ -1,13 +1,12 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../../reusable-ui/Card';
-import { fakeMenu } from '../../../../data/fakeMenu';
 import { theme } from '../../../../theme';
 import { formatPrice } from '../../../../utils/math';
+import OrderContext from '../../../../context/OrderContext';
+import { useContext } from 'react';
 
 export default function Menu() {
-	const [menu, setmenu] = useState(fakeMenu.LARGE);
-
+	const { menu } = useContext(OrderContext);
 	return (
 		// Map destructuring menu + hydratation du component
 		<MenuStyled>
