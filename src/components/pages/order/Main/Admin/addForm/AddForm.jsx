@@ -35,7 +35,7 @@ export default function AddForm() {
 	};
 
 	const handleChange = (e) => {
-		// dynamically proprety
+		// dynamically proprety name
 		const { name, value } = e.target;
 		setNewProduct({ ...newProduct, [name]: value });
 	};

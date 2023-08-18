@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
+import { TiDelete } from 'react-icons/ti';
 
 export default function Product({ title, imageSource, leftDescription }) {
 	return (
 		<ProductStyled className="produit">
+			<button className="delete-button" aria-label="delete-button">
+				{<TiDelete className="icon" />}
+			</button>
 			<div className="image">
 				<img src={imageSource} alt={title} />
 			</div>
@@ -22,6 +26,7 @@ export default function Product({ title, imageSource, leftDescription }) {
 }
 
 const ProductStyled = styled.div`
+	position: relative;
 	display: grid;
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 	background: ${theme.colors.white};
@@ -30,6 +35,31 @@ const ProductStyled = styled.div`
 	height: 330px;
 	width: 240px;
 	padding: 20px 20px 10px 20px;
+	.delete-button {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		cursor: pointer;
+		width: 30px;
+		height: 30px;
+		color: ${theme.colors.primary};
+		z-index: 2;
+		padding: 0;
+		border: none;
+		background: none;
+
+		.icon {
+			height: 100%;
+			width: 100%;
+		}
+		:hover {
+			color: ${theme.colors.red};
+		}
+		:active {
+			color: ${theme.colors.primary};
+		}
+	}
+
 	.image {
 		width: 100%;
 		height: auto;
