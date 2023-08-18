@@ -26,7 +26,7 @@ const OrderPage = () => {
 	};
 
 	const resetMenu = () => {
-		setMenu(fakeMenu.MEDIUM);
+		setMenu(fakeMenu.SMALL);
 	};
 
 	const orderContextValue = {
