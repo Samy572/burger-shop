@@ -9,7 +9,7 @@ import { fakeMenu } from '../../../data/fakeMenu';
 const OrderPage = () => {
 	const [isModeAdmin, setisModeAdmin] = useState(false);
 	const [isCollapsed, setisCollapsed] = useState(false);
-	const [menu, setMenu] = useState(fakeMenu.LARGE);
+	const [menu, setMenu] = useState(fakeMenu.EMPTY);
 
 	const [currentTabSelected, setcurrentTabSelected] = useState('add');
 
@@ -25,6 +25,10 @@ const OrderPage = () => {
 		setMenu(updateMenu);
 	};
 
+	const resetMenu = () => {
+		setMenu(fakeMenu.MEDIUM);
+	};
+
 	const orderContextValue = {
 		isModeAdmin,
 		setisModeAdmin,
@@ -35,6 +39,7 @@ const OrderPage = () => {
 		menu,
 		handleAdd,
 		handleDelete,
+		resetMenu,
 	};
 
 	return (

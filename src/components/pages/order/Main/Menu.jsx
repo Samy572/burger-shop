@@ -6,8 +6,20 @@ import OrderContext from '../../../../context/OrderContext';
 import { useContext } from 'react';
 
 export default function Menu() {
-	const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
+	const { menu, isModeAdmin, resetMenu, handleDelete } =
+		useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
+
+
+	
+	if (menu.length === 0) {
+		return (
+			<div>
+				<span> Pas de produit</span>
+				<button onClick={resetMenu}>Génerer de nouveaux produits </button>
+			</div>
+		);
+	}
 
 	return (
 		// Map destructuring menu + hydratation du component

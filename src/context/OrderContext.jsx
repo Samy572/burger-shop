@@ -13,6 +13,6 @@ export default createContext({
 	handleAdd: () => {},
 	menu: [],
 	setMenu: () => {},
-
 	handleDelete: () => {},
+	resetMenu: () => {},
 });
