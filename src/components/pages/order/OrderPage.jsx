@@ -7,7 +7,7 @@ import OrderContext from '../../../context/OrderContext';
 import { fakeMenu } from '../../../data/fakeMenu';
 
 const OrderPage = () => {
-	const [isModeAdmin, setisModeAdmin] = useState(true);
+	const [isModeAdmin, setisModeAdmin] = useState(false);
 	const [isCollapsed, setisCollapsed] = useState(false);
 	const [menu, setMenu] = useState(fakeMenu.LARGE);
 
@@ -19,6 +19,12 @@ const OrderPage = () => {
 		setMenu(menuUpdated);
 	};
 
+	const handleDelete = (idProduct) => {
+		const copyMenu = [...menu];
+		const updateMenu = copyMenu.filter((el) => el.id != idProduct);
+		setMenu(updateMenu);
+	};
+
 	const orderContextValue = {
 		isModeAdmin,
 		setisModeAdmin,
@@ -27,8 +33,8 @@ const OrderPage = () => {
 		currentTabSelected,
 		setcurrentTabSelected,
 		menu,
-		// setMenu,
 		handleAdd,
+		handleDelete,
 	};
 
 	return (

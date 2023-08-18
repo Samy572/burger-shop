@@ -3,12 +3,24 @@ import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
 import { TiDelete } from 'react-icons/ti';
 
-export default function Product({ title, imageSource, leftDescription }) {
+export default function Product({
+	title,
+	imageSource,
+	leftDescription,
+	hasDeleteButton,
+	onDelete,
+}) {
 	return (
 		<ProductStyled className="produit">
-			<button className="delete-button" aria-label="delete-button">
-				{<TiDelete className="icon" />}
-			</button>
+			{hasDeleteButton && (
+				<button
+					onClick={onDelete}
+					className="delete-button"
+					aria-label="delete-button"
+				>
+					{<TiDelete className="icon" />}
+				</button>
+			)}
 			<div className="image">
 				<img src={imageSource} alt={title} />
 			</div>

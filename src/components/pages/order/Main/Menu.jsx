@@ -6,8 +6,9 @@ import OrderContext from '../../../../context/OrderContext';
 import { useContext } from 'react';
 
 export default function Menu() {
-	const { menu } = useContext(OrderContext);
+	const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
+
 	return (
 		// Map destructuring menu + hydratation du component
 		<MenuStyled>
@@ -18,6 +19,8 @@ export default function Menu() {
 						title={title}
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						leftDescription={formatPrice(price)}
+						hasDeleteButton={isModeAdmin}
+						onDelete={() => handleDelete(id)}
 					/>
 				);
 			})}
