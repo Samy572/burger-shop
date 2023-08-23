@@ -1,3 +1,8 @@
 export default function EmptyMenuClient() {
-	return <div>On est en client et c'est vide </div>;
+	return (
+		<div>
+			<span> Pas de produit</span>
+			<button>Génerer de nouveaux produits </button>
+		</div>
+	);
 }

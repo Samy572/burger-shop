@@ -5,21 +5,16 @@ import { formatPrice } from '../../../../../utils/math';
 import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 import EmptyMenuClient from './EmptyMenuClient.jsx';
+import EmptyMenuAdmin from './EmptyMenuAdmin';
 export default function Menu() {
 	const { menu, isModeAdmin, resetMenu, handleDelete } =
 		useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
-	if (menu.length === 0 && isModeAdmin) {
-		return (
-			<div>
-				<span> Pas de produit</span>
-				<button onClick={resetMenu}>Génerer de nouveaux produits </button>
-			</div>
-		);
-	} else if (menu.length === 0 && !isModeAdmin) {
-		return <EmptyMenuClient />;
-	}
+	if (menu.length === 0 && isModeAdmin)
+		return <EmptyMenuAdmin onReset={resetMenu} />;
+
+	if (menu.length === 0 && !isModeAdmin) return <EmptyMenuClient />;
 
 	return (
 		// Map destructuring menu + hydratation du component
