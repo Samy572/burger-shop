@@ -12,7 +12,7 @@ export default function Menu() {
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
 	if (menu.length === 0 && isModeAdmin)
-		return <EmptyMenuAdmin onReset={resetMenu} />;
+		return <EmptyMenuAdmin onClick={resetMenu} />;
 
 	if (menu.length === 0 && !isModeAdmin) return <EmptyMenuClient />;
 
