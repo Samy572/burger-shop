@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
+import { version } from 'react';
 export default function TextInput({
 	value,
 	onChange,
@@ -33,15 +34,17 @@ const TextInputStyled = styled.div`
 		margin: 0 3px 0px 8px;
 		display: flex;
 	}
-	${(props) => {
-		if (props.version === 'normal') return normalStyle;
-		if (props.version === 'minimalist') return extraMinimalistStyle;
-	}};
+
+	// Proprieté dynamique de nom possibilité de destructuration
+
+	${(props) => extraStyle[props.version]}
+
+	/* ${({ version }) => extraStyle[version]} */
 `;
 
 // Extra style version minimalist && normal
 
-const normalStyle = css`
+const extraStyleNormal = css`
 	background-color: ${theme.colors.white};
 	padding: 18px 28px;
 	color: ${theme.colors.greySemiDark};
@@ -55,7 +58,7 @@ const normalStyle = css`
 	}
 `;
 
-const extraMinimalistStyle = css`
+const extraStyleMinimalist = css`
 	background-color: ${theme.colors.greyLight};
 	padding: 8px 6px;
 	color: ${theme.colors.greyBlue};
@@ -71,3 +74,8 @@ const extraMinimalistStyle = css`
 		color: ${theme.colors.background_dark};
 	}
 `;
+// Dictionnaire de style spécifique
+const extraStyle = {
+	normal: extraStyleNormal,
+	minimalist: extraStyleMinimalist,
+};
