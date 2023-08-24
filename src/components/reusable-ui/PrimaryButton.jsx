@@ -3,14 +3,14 @@ import { theme } from '../../theme';
 
 export default function Button({ Icon, label, className }) {
 	return (
-		<PrimaryStyledButton className={className}>
+		<PrimaryButtonStyled className={className}>
 			<span>{label}</span>
-			{Icon && Icon}
-		</PrimaryStyledButton>
+			<div className="icon">{Icon && Icon}</div>
+		</PrimaryButtonStyled>
 	);
 }
 
-const PrimaryStyledButton = styled.button`
+const PrimaryButtonStyled = styled.button`
 	width: 100%;
 	border: ${theme.borderRadius.subtle} solid red;
 	display: flex;
@@ -42,5 +42,11 @@ const PrimaryStyledButton = styled.button`
 	&:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
+	}
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-left: 10px;
 	}
 `;

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonCircle } from 'react-icons/bs';
-import { IoChevronForward } from 'react-icons/io5';
 import TextInput from '../../reusable-ui/TextInput';
 import PrimaryButton from '../../reusable-ui/PrimaryButton';
+import { BsPersonCircle } from 'react-icons/bs';
+import { IoChevronForward } from 'react-icons/io5';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
@@ -26,14 +26,15 @@ const LoginForm = () => {
 			<hr />
 			<h2>Connectez-vous</h2>
 			<TextInput
+				className='input-login'
 				value={inputValue}
 				onChange={handleChange}
-				Icon={<BsPersonCircle className="icon" />}
+				Icon={<BsPersonCircle />}
 				placeholder={'entrer votre prénom...'}
 				required
 			/>
 			<PrimaryButton
-				Icon={<IoChevronForward className="icon" />}
+				Icon={<IoChevronForward />}
 				label={'Acceder à votre espace'}
 			/>
 		</LoginFormStyled>
@@ -66,12 +67,9 @@ const LoginFormStyled = styled.form`
 		text-align: center;
 		font-size: ${theme.fonts.size.P4};
 	}
-	.icon {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: ${theme.fonts.size.P0};
-		margin-left: 10px;
+
+	.input-login {
+		margin: 18px 0;
 	}
 `;
 
