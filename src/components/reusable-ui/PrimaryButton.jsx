@@ -1,16 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
 
-export default function Button({ Icon, label, className }) {
+export default function Button({ Icon, label, className, version = 'normal' }) {
 	return (
-		<PrimaryButtonStyled className={className}>
+		<PrimaryButtonStyled version={version} className={className}>
 			<span>{label}</span>
 			<div className="icon">{Icon && Icon}</div>
 		</PrimaryButtonStyled>
 	);
 }
-
 const PrimaryButtonStyled = styled.button`
+	${(props) => props.version === 'normal' && normalStyle}
+	${(props) => props.version === 'success' && succesStyle}
+`;
+// style specifique
+
+const normalStyle = css`
 	width: 100%;
 	border: ${theme.borderRadius.subtle} solid red;
 	display: flex;
@@ -47,6 +52,26 @@ const PrimaryButtonStyled = styled.button`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-left: 10px;
+	}
+`;
+
+const succesStyle = css`
+	background-color: ${theme.colors.success};
+	color: ${theme.colors.white};
+	cursor: pointer;
+	border-radius: ${theme.borderRadius.round};
+	border: solid 1px ${theme.colors.success};
+	height: 35px;
+	padding: 0px 1.5em;
+	font-weight: ${theme.fonts.weights.semiBold};
+	&:hover {
+		background: ${theme.colors.white};
+		color: ${theme.colors.success};
+		border: solid 1px ${theme.colors.success};
+	}
+	&:active {
+		color: ${theme.colors.white};
+		background: ${theme.colors.success};
+		border: 1px solid ${theme.colors.success};
 	}
 `;
