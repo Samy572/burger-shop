@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
-import { version } from 'react';
 export default function TextInput({
 	value,
 	onChange,
@@ -37,9 +36,8 @@ const TextInputStyled = styled.div`
 
 	// Proprieté dynamique de nom possibilité de destructuration
 
-	${(props) => extraStyle[props.version]}
-
-	/* ${({ version }) => extraStyle[version]} */
+	${(props) => extraStyle[props.version]}/* ${({ version }) =>
+		extraStyle[version]} */
 `;
 
 // Extra style version minimalist && normal
