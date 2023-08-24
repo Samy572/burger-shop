@@ -26,12 +26,13 @@ const LoginForm = () => {
 			<hr />
 			<h2>Connectez-vous</h2>
 			<TextInput
-				className='input-login'
+				className="input-login"
 				value={inputValue}
 				onChange={handleChange}
 				Icon={<BsPersonCircle />}
 				placeholder={'entrer votre prénom...'}
 				required
+				version="normal"
 			/>
 			<PrimaryButton
 				Icon={<IoChevronForward />}

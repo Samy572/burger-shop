@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { theme } from '../../../../../../theme';
 import OrderContext from '../../../../../../context/OrderContext';
 import { FiCheck } from 'react-icons/fi';
+import { FaHamburger } from 'react-icons/fa';
+import { BsFillCameraFill } from 'react-icons/bs';
+import { MdOutlineEuro } from 'react-icons/md';
+import TextInput from '../../../../../reusable-ui/TextInput';
 
 export default function AddForm() {
 	const EMPTY_PRODUCT = {
@@ -51,31 +55,37 @@ export default function AddForm() {
 				)}
 			</div>
 			<div className="input-fields">
-				<input
+				<TextInput
 					name="title"
 					onChange={handleChange}
 					value={newProduct.title}
 					type="text"
 					placeholder="Nom du produit"
+					Icon={<FaHamburger />}
+					version={'minimalist'}
 				/>
-				<input
+				<TextInput
 					name="imageSource"
 					onChange={handleChange}
 					value={newProduct.imageSource}
 					type="text"
 					placeholder="Lien url de l'image"
+					Icon={<BsFillCameraFill />}
+					version={'minimalist'}
 				/>
-				<input
+				<TextInput
 					name="price"
 					onChange={handleChange}
 					value={newProduct.price ? newProduct.price : ''}
 					type="text"
 					placeholder="Prix"
+					Icon={<MdOutlineEuro />}
+					version={'minimalist'}
 				/>
 			</div>
 
-			<div className="submit-button">
-				<button>Submit product</button>
+			<div className="submit">
+				<button className="submit-button">Submit product</button>
 				{isSubmited && (
 					<div className="submit-message">
 						<span>
@@ -92,12 +102,15 @@ export default function AddForm() {
 const AddFormStyled = styled.form`
 	height: 100%;
 	/* border: solid 1px black; */
-	padding: 30px 5%;
+	width: 70%;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	grid-column-gap: 20px;
 	grid-template-rows: repeat(4, 1fr);
 	grid-row-gap: 8px;
+	padding-top: 10px;
+	margin-left: 50px;
+
 	.image-preview {
 		grid-area: 1/1/4/2;
 		justify-content: center;
@@ -124,18 +137,18 @@ const AddFormStyled = styled.form`
 
 	.input-fields {
 		display: grid;
-		background: blue;
 		grid-area: 1/2/4/2;
+		grid-row-gap: 8px;
 	}
 
-	.submit-button {
+	.submit {
 		display: grid;
 		background: green;
 		grid-area: 4/-2/-1/-1;
 		display: flex;
-
 		align-items: center;
-		button {
+
+		.submmit-button {
 			width: 50%;
 		}
 	}
