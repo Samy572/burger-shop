@@ -2,25 +2,16 @@ import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../../../../theme';
 import OrderContext from '../../../../../../context/OrderContext';
-import { FaHamburger } from 'react-icons/fa';
-import { BsFillCameraFill } from 'react-icons/bs';
-import { MdOutlineEuro } from 'react-icons/md';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../../reusable-ui/PrimaryButton.jsx';
 import ImagePreview from '../AdminPanel/ImagePreview';
 import SubmitMessage from '../AdminPanel/SubmitMessage';
-
-export const EMPTY_PRODUCT = {
-	id: '',
-	title: '',
-	imageSource: '',
-	price: 0,
-};
+import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig.jsx';
 
 export default function AddForm() {
-	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+	const { handleAdd, newProduct, setNewProduct, EMPTY_PRODUCT } =
+		useContext(OrderContext);
 	const [isSubmited, setisSubmited] = useState(false);
-	// const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
 	const newProductToAdd = {
 		...newProduct,
@@ -47,6 +38,8 @@ export default function AddForm() {
 		setNewProduct({ ...newProduct, [name]: value });
 	};
 
+	const inputTexts = getInputTextsConfig(newProduct);
+
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
 			<ImagePreview
@@ -54,35 +47,17 @@ export default function AddForm() {
 				title={newProduct.title}
 			/>
 			<div className="input-fields">
-				<TextInput
-					name="title"
-					onChange={handleChange}
-					value={newProduct.title}
-					type="text"
-					placeholder="Nom du produit"
-					Icon={<FaHamburger />}
-					version={'minimalist'}
-				/>
-				<TextInput
-					name="imageSource"
-					onChange={handleChange}
-					value={newProduct.imageSource}
-					type="text"
-					placeholder="Lien url de l'image"
-					Icon={<BsFillCameraFill />}
-					version={'minimalist'}
-				/>
-				<TextInput
-					name="price"
-					onChange={handleChange}
-					value={newProduct.price ? newProduct.price : ''}
-					type="text"
-					placeholder="Prix"
-					Icon={<MdOutlineEuro />}
-					version={'minimalist'}
-				/>
+				{inputTexts.map((input) => {
+					return (
+						<TextInput
+							key={input.id}
+							{...input}
+							onChange={handleChange}
+							version="minimalist"
+						/>
+					);
+				})}
 			</div>
-
 			<div className="submit">
 				<PrimaryButton
 					label={'Ajouter un nouveau produit au menu'}

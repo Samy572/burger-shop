@@ -18,4 +18,5 @@ export default createContext({
 
 	newProduct: [],
 	setNewProduct: () => {},
+	EMPTY_PRODUCT: {},
 });
