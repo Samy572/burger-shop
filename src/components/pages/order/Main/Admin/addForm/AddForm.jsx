@@ -8,6 +8,7 @@ import { BsFillCameraFill } from 'react-icons/bs';
 import { MdOutlineEuro } from 'react-icons/md';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../../reusable-ui/PrimaryButton.jsx';
+import ImagePreview from '../AdminPanel/ImagePreview';
 
 export const EMPTY_PRODUCT = {
 	id: '',
@@ -48,13 +49,10 @@ export default function AddForm() {
 
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
-			<div className="image-preview">
-				{newProduct.imageSource ? (
-					<img src={newProduct.imageSource} alt={newProduct.title} />
-				) : (
-					<div className="empty-image">Aucune image</div>
-				)}
-			</div>
+			<ImagePreview
+				imageSource={newProduct.imageSource}
+				title={newProduct.title}
+			/>
 			<div className="input-fields">
 				<TextInput
 					name="title"
