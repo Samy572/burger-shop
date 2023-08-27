@@ -15,4 +15,7 @@ export default createContext({
 	setMenu: () => {},
 	handleDelete: () => {},
 	resetMenu: () => {},
+
+	newProduct: [],
+	setNewProduct: () => {},
 });

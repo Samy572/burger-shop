@@ -9,17 +9,17 @@ import { MdOutlineEuro } from 'react-icons/md';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../../reusable-ui/PrimaryButton.jsx';
 
-export default function AddForm() {
-	const EMPTY_PRODUCT = {
-		id: '',
-		title: '',
-		imageSource: '',
-		price: 0,
-	};
+export const EMPTY_PRODUCT = {
+	id: '',
+	title: '',
+	imageSource: '',
+	price: 0,
+};
 
-	const { handleAdd } = useContext(OrderContext);
-	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+export default function AddForm() {
+	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
 	const [isSubmited, setisSubmited] = useState(false);
+	// const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
 	const newProductToAdd = {
 		...newProduct,
