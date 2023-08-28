@@ -15,7 +15,7 @@ export default function NavBarRightSide() {
 			toast.info('Mode admin activé', {
 				theme: 'dark',
 				position: 'bottom-right',
-				autoClose: false,
+				autoClose: true,
 				hideProgressBar: false,
 				closeOnClick: true,
 				pauseOnHover: true,
@@ -32,10 +32,11 @@ export default function NavBarRightSide() {
 				labelIfChecked={'Désactiver le mode admin'}
 				labelIfUnchecked={'Activer le mode admin'}
 				onToggle={displayToast}
-				backgroundCustom={theme.colors.background_dark}
-				colorCustom={theme.colors.primary}
+
+				// backgroundCustom={theme.colors.background_dark}
+				// colorCustom={theme.colors.primary}
 			/>
-			{/* <NavbarRightSideIncomplet /> */}
+
 			<Profile />
 			<AdminToast />
 		</NavBarRightSideStyled>

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
 // import Basket from '../Main/Basket';
-import Menu from '../Main/Menu';
-import Admin from './Admin/Admin';
+import Menu from './Menu/Menu.jsx';
+import Admin from './Admin/AdminPanel/Admin.jsx';
 import { useContext } from 'react';
-import OrderContext from '../../../../context/OrderContext';
+import OrderContext from '../../../../context/OrderContext.jsx';
 
 export default function Main() {
 	const { isModeAdmin } = useContext(OrderContext);
