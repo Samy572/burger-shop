@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../../../theme';
 import OrderContext from '../../../../../../context/OrderContext';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../../reusable-ui/PrimaryButton.jsx';
@@ -81,30 +80,6 @@ const AddFormStyled = styled.form`
 	padding-top: 10px;
 	margin-left: 50px;
 
-	.image-preview {
-		grid-area: 1/1/4/2;
-		justify-content: center;
-		align-items: center;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-			object-position: center;
-		}
-	}
-
-	.empty-image {
-		height: 100%;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: 1px solid ${theme.colors.greyLight};
-		line-height: 1.5;
-		color: ${theme.colors.greySemiDark};
-		border-radius: ${theme.borderRadius.round};
-	}
-
 	.input-fields {
 		display: grid;
 		grid-area: 1/2/4/2;
@@ -115,7 +90,6 @@ const AddFormStyled = styled.form`
 		grid-area: 4/-2/-1/-1;
 		display: flex;
 		align-items: center;
-		position: relative;
 		top: 3px;
 	}
 `;
