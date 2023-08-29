@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 export default function Menu() {
-	const { menu, isModeAdmin, resetMenu, handleDelete } =
+	const { menu, isModeAdmin, resetMenu, handleDelete, setProductSelected } =
 		useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
@@ -15,6 +15,11 @@ export default function Menu() {
 		return <EmptyMenuAdmin onClick={resetMenu} />;
 
 	if (menu.length === 0 && !isModeAdmin) return <EmptyMenuClient />;
+
+	const handleClick = (idProductSelected) => {
+		const productSelected = menu.find((el) => el.id === idProductSelected);
+		setProductSelected(productSelected);
+	};
 
 	return (
 		// Map destructuring menu + hydratation du component
@@ -28,6 +33,7 @@ export default function Menu() {
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
 						onDelete={() => handleDelete(id)}
+						onClick={() => handleClick(id)}
 					/>
 				);
 			})}

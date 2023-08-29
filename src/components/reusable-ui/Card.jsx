@@ -9,9 +9,10 @@ export default function Product({
 	leftDescription,
 	hasDeleteButton,
 	onDelete,
+	onClick,
 }) {
 	return (
-		<ProductStyled className="produit">
+		<ProductStyled onClick={onClick} className="produit">
 			{hasDeleteButton && (
 				<button
 					onClick={onDelete}

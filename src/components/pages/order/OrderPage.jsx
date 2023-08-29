@@ -5,17 +5,14 @@ import Navbar from './Navbar/Navbar';
 import { useState } from 'react';
 import OrderContext from '../../../context/OrderContext';
 import { fakeMenu } from '../../../data/fakeMenu';
+import { EMPTY_PRODUCT } from '../../../../enums/product';
 
 const OrderPage = () => {
-	const [isModeAdmin, setisModeAdmin] = useState(true);
+	const [isModeAdmin, setisModeAdmin] = useState(false);
 	const [isCollapsed, setisCollapsed] = useState(false);
 	const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-	const EMPTY_PRODUCT = {
-		id: '',
-		title: '',
-		imageSource: '',
-		price: 0,
-	};
+	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
 	const [currentTabSelected, setcurrentTabSelected] = useState('edit');
@@ -50,6 +47,8 @@ const OrderPage = () => {
 		newProduct,
 		setNewProduct,
 		EMPTY_PRODUCT,
+		productSelected,
+		setProductSelected,
 	};
 
 	return (

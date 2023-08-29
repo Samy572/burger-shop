@@ -2,7 +2,7 @@ const EMPTY = [];
 
 const SMALL = [
 	{
-		id: 1,
+		id: "1",
 		imageSource: '/img/burger1.webp',
 		title: 'Burger 1',
 		price: 5.297,
@@ -11,7 +11,7 @@ const SMALL = [
 		isAdvertised: false,
 	},
 	{
-		id: 2,
+		id: "2",
 		imageSource: '/img/burger2.webp',
 		title: 'Burger 2',
 		price: 7.556,
@@ -23,7 +23,7 @@ const SMALL = [
 
 const MEDIUM = [
 	{
-		id: 1,
+		id: "1",
 		imageSource: '/img/burger-bacon-egg.webp',
 		title: 'Burger Smoke BBQ',
 		price: 5.598,
@@ -32,7 +32,7 @@ const MEDIUM = [
 		isAdvertised: false,
 	},
 	{
-		id: 2,
+		id: "2",
 		imageSource: '/img/burger-vegan.webp',
 		title: 'Vegan Burger',
 		price: 5.4985,
@@ -41,7 +41,7 @@ const MEDIUM = [
 		isAdvertised: false,
 	},
 	{
-		id: 3,
+		id: "3",
 		imageSource: '/img/burger3.webp',
 		title: 'Burger poulet',
 		price: 5.367,
@@ -50,7 +50,7 @@ const MEDIUM = [
 		isAdvertised: false,
 	},
 	{
-		id: 4,
+		id: "4",
 		imageSource: '/img/drink1.webp',
 		title: 'Coke 25cl',
 		price: 3.568,
@@ -59,7 +59,7 @@ const MEDIUM = [
 		isAdvertised: false,
 	},
 	{
-		id: 5,
+		id: "5",
 		imageSource: '/img/drink2.webp',
 		title: 'Pepsi 25cl',
 		price: 3.487,
@@ -71,7 +71,7 @@ const MEDIUM = [
 
 const LARGE = [
 	{
-		id: 1,
+		id: "1",
 		imageSource: '/img/burger-bacon-egg.webp',
 		title: 'Burger Smoke BBQ',
 		price: 5.598,
@@ -80,7 +80,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 2,
+		id: "2",
 		imageSource: '/img/burger-vegan.webp',
 		title: 'Vegan Burger',
 		price: 5.4985,
@@ -89,7 +89,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 3,
+		id: "3",
 		imageSource: '/img/burger3.webp',
 		title: 'Burger poulet',
 		price: 5.367,
@@ -98,7 +98,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 4,
+		id: "4",
 		imageSource: '/img/drink1.webp',
 		title: 'Coke 25cl',
 		price: 3.568,
@@ -107,7 +107,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 5,
+		id: "5",
 		imageSource: '/img/drink2.webp',
 		title: 'Pepsi 25cl',
 		price: 3.487,
@@ -116,7 +116,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 6,
+		id: "6",
 		imageSource: '/img/drink3.webp',
 		title: 'Iced Tea 25cl',
 		price: 3.356,
@@ -125,7 +125,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 7,
+		id: "7",
 		imageSource: '/img/frites1.webp',
 		title: 'Frites Paprika',
 		price: 2.567,
@@ -134,7 +134,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 8,
+		id: "8",
 		imageSource: '/img/fries3.webp',
 		title: 'New York Fries',
 		price: 3.1678,
@@ -143,7 +143,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 9,
+		id: "9",
 		imageSource: '/img/wedges1.webp',
 		title: 'Crispy Potatoes',
 		price: 3.7,
@@ -152,7 +152,7 @@ const LARGE = [
 		isAdvertised: false,
 	},
 	{
-		id: 10,
+		id: "10",
 		imageSource: '/img/ice-cream.webp',
 		title: 'Glaces artisanales',
 		price: 4.678,
