@@ -7,7 +7,7 @@ import OrderContext from '../../../context/OrderContext';
 import { fakeMenu } from '../../../data/fakeMenu';
 
 const OrderPage = () => {
-	const [isModeAdmin, setisModeAdmin] = useState(false);
+	const [isModeAdmin, setisModeAdmin] = useState(true);
 	const [isCollapsed, setisCollapsed] = useState(false);
 	const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 	const EMPTY_PRODUCT = {
@@ -18,7 +18,7 @@ const OrderPage = () => {
 	};
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
-	const [currentTabSelected, setcurrentTabSelected] = useState('add');
+	const [currentTabSelected, setcurrentTabSelected] = useState('edit');
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu];
