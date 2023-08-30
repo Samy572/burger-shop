@@ -1,19 +1,67 @@
 import styled from 'styled-components';
-import HintMessage from './HintMessage';
 import { useContext } from 'react';
 import OrderContext from '../../../../../../context/OrderContext';
+import ImagePreview from '../AdminPanel/ImagePreview';
+import TextInput from '../../../../../reusable-ui/TextInput';
+import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig';
+import SubmitMessage from '../AdminPanel/SubmitMessage';
 
 export default function EditForm() {
-	const { productSelected } = useContext(OrderContext);
+	const { productSelected, setProductSelected } = useContext(OrderContext);
+
+	const inputTexts = getInputTextsConfig(productSelected);
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setProductSelected({ ...productSelected, [name]: value });
+
+	};
 
 	return (
 		<EditFormStyled>
-			<HintMessage />
-			{<span>{productSelected.title}</span>}
+			<ImagePreview
+				imageSource={productSelected.imageSource}
+				title={productSelected.title}
+			/>
+			<div className="input-fields">
+				{inputTexts.map((input) => {
+					return (
+						<TextInput
+							key={input.id}
+							{...input}
+							onChange={handleChange}
+							version="minimalist"
+						/>
+					);
+				})}
+			</div>
+			<div className="submit">{<SubmitMessage />}</div>
 		</EditFormStyled>
 	);
 }
 
 const EditFormStyled = styled.div`
 	height: 100%;
+	/* border: solid 1px black; */
+	width: 70%;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 20px;
+	grid-template-rows: repeat(4, 1fr);
+	grid-row-gap: 8px;
+	padding-top: 10px;
+	margin-left: 50px;
+
+	.input-fields {
+		display: grid;
+		grid-area: 1/2/4/2;
+		grid-row-gap: 8px;
+	}
+	.submit {
+		display: grid;
+		grid-area: 4/-2/-1/-1;
+		display: flex;
+		align-items: center;
+		top: 3px;
+	}
 `;
