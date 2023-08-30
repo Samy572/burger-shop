@@ -7,14 +7,20 @@ import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig';
 import SubmitMessage from '../AdminPanel/SubmitMessage';
 
 export default function EditForm() {
-	const { productSelected, setProductSelected } = useContext(OrderContext);
-
+	// State
+	const { productSelected, setProductSelected, handleEdit } =
+		useContext(OrderContext);
 	const inputTexts = getInputTextsConfig(productSelected);
 
+	// Comportement
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setProductSelected({ ...productSelected, [name]: value });
-
+		const productBeingUpdate = {
+			...productSelected,
+			[name]: value,
+		};
+		setProductSelected(productBeingUpdate);
+		handleEdit(productBeingUpdate);
 	};
 
 	return (

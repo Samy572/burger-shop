@@ -21,4 +21,6 @@ export default createContext({
 	EMPTY_PRODUCT: {},
 	productSelected: {},
 	setProductSelected: () => {},
+
+	handleEdit: () => {},
 });
