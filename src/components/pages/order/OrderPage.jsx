@@ -6,6 +6,7 @@ import { useState } from 'react';
 import OrderContext from '../../../context/OrderContext';
 import { fakeMenu } from '../../../data/fakeMenu';
 import { EMPTY_PRODUCT } from '../../../../enums/product';
+import { deepClone } from '../../../utils/array';
 
 const OrderPage = () => {
 	const [isModeAdmin, setisModeAdmin] = useState(false);
@@ -18,20 +19,20 @@ const OrderPage = () => {
 	const [currentTabSelected, setcurrentTabSelected] = useState('edit');
 
 	const handleAdd = (newProduct) => {
-		const menuCopy = [...menu];
+		const menuCopy = deepClone(menu);
 		const menuUpdated = [newProduct, ...menuCopy];
 		setMenu(menuUpdated);
 	};
 
 	const handleDelete = (idProduct) => {
-		const copyMenu = [...menu];
+		const copyMenu = deepClone(menu);
 		const updateMenu = copyMenu.filter((el) => el.id != idProduct);
 		setMenu(updateMenu);
 	};
 
 	const handleEdit = (productBeingUpdate) => {
 		// Copie du state avec un deep clone
-		const menuCopy = JSON.parse(JSON.stringify(menu));
+		const menuCopy = deepClone(menu);
 		// Manip de la copie du state
 		const indexOfProductToEdit = menu.findIndex(
 			(menuProduct) => menuProduct.id === productBeingUpdate.id
