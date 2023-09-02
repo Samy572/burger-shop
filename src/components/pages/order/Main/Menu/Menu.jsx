@@ -11,15 +11,15 @@ export default function Menu() {
 		useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
+	const handleClick = (idProductSelected) => {
+		const productClickedOn = menu.find((el) => el.id === idProductSelected);
+		setProductSelected(productClickedOn);
+	};
+
 	if (menu.length === 0 && isModeAdmin)
 		return <EmptyMenuAdmin onClick={resetMenu} />;
 
 	if (menu.length === 0 && !isModeAdmin) return <EmptyMenuClient />;
-
-	const handleClick = (idProductSelected) => {
-		const productSelected = menu.find((el) => el.id === idProductSelected);
-		setProductSelected(productSelected);
-	};
 
 	return (
 		// Map destructuring menu + hydratation du component
@@ -34,6 +34,7 @@ export default function Menu() {
 						hasDeleteButton={isModeAdmin}
 						onDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
+						isHoverable={isModeAdmin}
 					/>
 				);
 			})}

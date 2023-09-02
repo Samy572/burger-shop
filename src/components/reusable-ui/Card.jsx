@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
 import { TiDelete } from 'react-icons/ti';
@@ -10,9 +10,14 @@ export default function Product({
 	hasDeleteButton,
 	onDelete,
 	onClick,
+	isHoverable,
 }) {
 	return (
-		<ProductStyled onClick={onClick} className="produit">
+		<ProductStyled
+			onClick={onClick}
+			isHoverable={isHoverable}
+			className="produit"
+		>
 			{hasDeleteButton && (
 				<button
 					onClick={onDelete}
@@ -39,14 +44,16 @@ export default function Product({
 }
 
 const ProductStyled = styled.div`
+	${(props) => props.isHoverable && hoverableStyle}
+	height: 330px;
+	width: 240px;
 	position: relative;
 	display: grid;
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 	background: ${theme.colors.white};
+	box-sizing: border-box;
 	border-radius: ${theme.borderRadius.extraRound};
 	grid-template-rows: 65% 1fr;
-	height: 330px;
-	width: 240px;
 	padding: 20px 20px 10px 20px;
 	.delete-button {
 		position: absolute;
@@ -134,5 +141,12 @@ const ProductStyled = styled.div`
 				}
 			}
 		}
+	}
+`;
+
+const hoverableStyle = css`
+	:hover {
+		transition: ease-out 0.4s;
+		box-shadow: ${theme.shadows.orangeHighlight};
 	}
 `;
