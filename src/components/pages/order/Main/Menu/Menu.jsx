@@ -6,15 +6,24 @@ import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
+import { checkIfProductIsClicked } from './helper';
 export default function Menu() {
-	const { menu, isModeAdmin, resetMenu, handleDelete, setProductSelected } =
-		useContext(OrderContext);
+	const {
+		menu,
+		isModeAdmin,
+		resetMenu,
+		handleDelete,
+		productSelected,
+		setProductSelected,
+	} = useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
 	const handleClick = (idProductSelected) => {
 		const productClickedOn = menu.find((el) => el.id === idProductSelected);
 		setProductSelected(productClickedOn);
 	};
+
+
 
 	if (menu.length === 0 && isModeAdmin)
 		return <EmptyMenuAdmin onClick={resetMenu} />;
@@ -32,9 +41,10 @@ export default function Menu() {
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
+						isHoverable={isModeAdmin}
+						isSelected={() => checkIfProductIsClicked(id, productSelected.id)}
 						onDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
-						isHoverable={isModeAdmin}
 					/>
 				);
 			})}

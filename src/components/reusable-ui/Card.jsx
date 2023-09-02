@@ -11,12 +11,15 @@ export default function Product({
 	onDelete,
 	onClick,
 	isHoverable,
+	isSelected,
 }) {
 	return (
 		<ProductStyled
 			onClick={onClick}
 			isHoverable={isHoverable}
 			className="produit"
+			isSelected={isSelected}
+			style={isSelected ? { background: 'orange' } : {}}
 		>
 			{hasDeleteButton && (
 				<button
