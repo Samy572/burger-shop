@@ -1,35 +1,33 @@
-import styled, { css } from 'styled-components';
-import PrimaryButton from './PrimaryButton';
+import styled from 'styled-components';
 import { theme } from '../../theme';
+import PrimaryButton from './PrimaryButton.jsx';
 import { TiDelete } from 'react-icons/ti';
 
-export default function Product({
+export default function Card({
 	title,
 	imageSource,
 	leftDescription,
 	hasDeleteButton,
 	onDelete,
 	onClick,
-	isHoverable,
-	isSelected,
 }) {
+	// state (vide)
+
+	// comportements (vide)
+
+	// affichage
 	return (
-		<ProductStyled
-			onClick={onClick}
-			isHoverable={isHoverable}
-			className="produit"
-			isSelected={isSelected}
-			style={isSelected ? { background: 'orange' } : {}}
-		>
+		<CardStyled className="produit" onClick={onClick}>
 			{hasDeleteButton && (
 				<button
-					onClick={onDelete}
 					className="delete-button"
 					aria-label="delete-button"
+					onClick={onDelete}
 				>
-					{<TiDelete className="icon" />}
+					<TiDelete className="icon" />
 				</button>
 			)}
+
 			<div className="image">
 				<img src={imageSource} alt={title} />
 			</div>
@@ -38,27 +36,36 @@ export default function Product({
 				<div className="description">
 					<div className="left-description">{leftDescription}</div>
 					<div className="right-description">
-						<PrimaryButton className={'primary-button'} label={'Ajouter'} />
+						<PrimaryButton
+							className="primary-button"
+							label={'Ajouter'}
+							onClick={(event) => event.stopPropagation()}
+						/>
 					</div>
 				</div>
 			</div>
-		</ProductStyled>
+		</CardStyled>
 	);
 }
 
-const ProductStyled = styled.div`
-	${(props) => props.isHoverable && hoverableStyle}
+const CardStyled = styled.div`
+	border-radius: ${theme.borderRadius.extraRound};
 	height: 330px;
-	width: 240px;
-	position: relative;
-	display: grid;
-	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+
 	background: ${theme.colors.white};
 	box-sizing: border-box;
-	border-radius: ${theme.borderRadius.extraRound};
+	width: 240px;
+	height: 330px;
+	display: grid;
 	grid-template-rows: 65% 1fr;
-	padding: 20px 20px 10px 20px;
+	padding: 20px;
+	padding-bottom: 10px;
+	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+	border-radius: ${theme.borderRadius.extraRound};
+	position: relative;
+
 	.delete-button {
+		border: 1px solid red;
 		position: absolute;
 		top: 15px;
 		right: 15px;
@@ -72,11 +79,14 @@ const ProductStyled = styled.div`
 		background: none;
 
 		.icon {
+			/* border: 1px solid blue; */
 			height: 100%;
 			width: 100%;
 		}
+
 		:hover {
 			color: ${theme.colors.red};
+			/* background-color: red; */
 		}
 		:active {
 			color: ${theme.colors.primary};
@@ -95,6 +105,7 @@ const ProductStyled = styled.div`
 			object-fit: contain;
 		}
 	}
+
 	.text-info {
 		display: grid;
 		grid-template-rows: 30% 70%;
@@ -144,12 +155,5 @@ const ProductStyled = styled.div`
 				}
 			}
 		}
-	}
-`;
-
-const hoverableStyle = css`
-	:hover {
-		transition: ease-out 0.4s;
-		box-shadow: ${theme.shadows.orangeHighlight};
 	}
 `;

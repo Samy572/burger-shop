@@ -23,8 +23,6 @@ export default function Menu() {
 		setProductSelected(productClickedOn);
 	};
 
-
-
 	if (menu.length === 0 && isModeAdmin)
 		return <EmptyMenuAdmin onClick={resetMenu} />;
 
@@ -40,8 +38,6 @@ export default function Menu() {
 						title={title}
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						leftDescription={formatPrice(price)}
-						hasDeleteButton={isModeAdmin}
-						isHoverable={isModeAdmin}
 						isSelected={() => checkIfProductIsClicked(id, productSelected.id)}
 						onDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
