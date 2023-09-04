@@ -47,6 +47,7 @@ export default function Menu() {
 						isSelected={() => checkIfProductIsClicked(id, productSelected.id)}
 						onDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
+						hasDeleteButton={isModeAdmin}
 					/>
 				);
 			})}

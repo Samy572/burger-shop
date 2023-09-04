@@ -5,8 +5,10 @@ import OrderContext from '../../../../../../context/OrderContext';
 import { getTabsConfig } from './getTabConfig';
 
 export default function AdminPanel() {
-	const { currentTabSelected } = useContext(OrderContext);
-	const tabs = getTabsConfig(currentTabSelected);
+	const { currentTabSelected, productSelected, EMPTY_PRODUCT } =
+		useContext(OrderContext);
+	const hasAlreadyBeenclicked = productSelected !== EMPTY_PRODUCT;
+	const tabs = getTabsConfig(currentTabSelected, hasAlreadyBeenclicked);
 	const tabSelected = tabs.find((tab) => tab.index === currentTabSelected);
 
 	return (

@@ -26,10 +26,11 @@ const OrderPage = () => {
 		setMenu(menuUpdated);
 	};
 
-	const handleDelete = (idProduct) => {
+	const handleDelete = async (idProduct) => {
 		const copyMenu = deepClone(menu);
 		const updateMenu = copyMenu.filter((el) => el.id != idProduct);
-		setMenu(updateMenu);
+		await setMenu(updateMenu);
+		setProductSelected(EMPTY_PRODUCT);
 	};
 
 	const handleEdit = (productBeingUpdate) => {
@@ -46,7 +47,7 @@ const OrderPage = () => {
 	};
 
 	const resetMenu = () => {
-		setMenu(fakeMenu.SMALL);
+		setMenu(fakeMenu.MEDIUM);
 	};
 
 	const orderContextValue = {
