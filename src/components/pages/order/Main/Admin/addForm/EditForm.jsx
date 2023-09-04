@@ -4,8 +4,8 @@ import OrderContext from '../../../../../../context/OrderContext';
 import ImagePreview from '../AdminPanel/ImagePreview';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig';
-import SubmitMessage from '../AdminPanel/SubmitMessage';
 import { theme } from '../../../../../../theme';
+import EditInfoMessage from '../AdminPanel/EditMessage';
 
 export default function EditForm() {
 	// State
@@ -44,10 +44,7 @@ export default function EditForm() {
 				})}
 			</div>
 			<div className="submit">
-				<span className="sentence">
-					Cliquer sur un produit du menu pour le modifier {''}{' '}
-					<span className="live-update">En temps réel</span>
-				</span>
+				<EditInfoMessage />
 			</div>
 		</EditFormStyled>
 	);
@@ -77,13 +74,12 @@ const EditFormStyled = styled.div`
 		align-items: center;
 		top: 3px;
 
-		.sentence{
-			color:${theme.colors.primary};
+		.sentence {
+			color: ${theme.colors.primary};
 			font-size: ${theme.fonts.size.SM};
-			.live-update{
+			.live-update {
 				text-decoration: underline;
 			}
-		
 		}
 	}
 `;
