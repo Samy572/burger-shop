@@ -9,7 +9,7 @@ export default function EmptyMenuClient() {
 			<span className="description"> À très vite !</span>
 		</EmptyMenuClientStyled>
 	);
-}k
+}
 
 const EmptyMenuClientStyled = styled.div`
 	background-color: ${theme.colors.background_white};

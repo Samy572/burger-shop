@@ -5,13 +5,13 @@ import ImagePreview from '../AdminPanel/ImagePreview';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig';
 import SubmitMessage from '../AdminPanel/SubmitMessage';
+import { theme } from '../../../../../../theme';
 
 export default function EditForm() {
 	// State
 	const { productSelected, setProductSelected, handleEdit, titleEditRef } =
 		useContext(OrderContext);
 	const inputTexts = getInputTextsConfig(productSelected);
-
 
 	// Comportement
 	const handleChange = (e) => {
@@ -43,7 +43,12 @@ export default function EditForm() {
 					);
 				})}
 			</div>
-			<div className="submit">{<SubmitMessage />}</div>
+			<div className="submit">
+				<span className="sentence">
+					Cliquer sur un produit du menu pour le modifier {''}{' '}
+					<span className="live-update">En temps réel</span>
+				</span>
+			</div>
 		</EditFormStyled>
 	);
 }
@@ -71,5 +76,14 @@ const EditFormStyled = styled.div`
 		display: flex;
 		align-items: center;
 		top: 3px;
+
+		.sentence{
+			color:${theme.colors.primary};
+			font-size: ${theme.fonts.size.SM};
+			.live-update{
+				text-decoration: underline;
+			}
+		
+		}
 	}
 `;
