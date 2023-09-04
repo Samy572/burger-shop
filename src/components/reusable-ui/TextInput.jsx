@@ -1,20 +1,22 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
-export default function TextInput({
-	value,
-	onChange,
-	Icon,
-	className,
-	version = 'normal',
-	...restProps
-}) {
-	return (
-		<TextInputStyled className={className} version={version}>
-			<div className="icon">{Icon && Icon}</div>
-			<input value={value} onChange={onChange} {...restProps} />
-		</TextInputStyled>
-	);
-}
+import { forwardRef } from 'react';
+
+const TextInput = forwardRef(
+	(
+		{ value, onChange, Icon, className, version = 'normal', ...restProps },
+		ref
+	) => {
+		return (
+			<TextInputStyled className={className} version={version}>
+				<div className="icon">{Icon && Icon}</div>
+				<input value={value} onChange={onChange} {...restProps} ref={ref} />
+			</TextInputStyled>
+		);
+	}
+);
 
 const TextInputStyled = styled.div`
 	border-radius: ${theme.borderRadius.round};
@@ -77,3 +79,5 @@ const extraStyle = {
 	normal: extraStyleNormal,
 	minimalist: extraStyleMinimalist,
 };
+
+export default TextInput;

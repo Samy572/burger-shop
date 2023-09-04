@@ -17,14 +17,16 @@ export default function Menu() {
 		setProductSelected,
 		setisCollapsed,
 		setcurrentTabSelected,
+		titleEditRef,
 	} = useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
-	const handleClick = (idProductSelected) => {
+	const handleClick = async (idProductSelected) => {
 		if (isModeAdmin) setisCollapsed(false);
 		setcurrentTabSelected('edit');
 		const productClickedOn = menu.find((el) => el.id === idProductSelected);
-		setProductSelected(productClickedOn);
+		await setProductSelected(productClickedOn);
+		titleEditRef.current.focus();
 	};
 
 	if (menu.length === 0 && isModeAdmin)

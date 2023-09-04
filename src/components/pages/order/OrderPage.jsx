@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Main from './Main/Main';
 import { theme } from '../../../theme';
 import Navbar from './Navbar/Navbar';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import OrderContext from '../../../context/OrderContext';
 import { fakeMenu } from '../../../data/fakeMenu';
 import { EMPTY_PRODUCT } from '../../../../enums/product';
@@ -17,6 +17,8 @@ const OrderPage = () => {
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
 	const [currentTabSelected, setcurrentTabSelected] = useState('edit');
+
+	const titleEditRef = useRef();
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = deepClone(menu);
@@ -64,6 +66,7 @@ const OrderPage = () => {
 		productSelected,
 		setProductSelected,
 		handleEdit,
+		titleEditRef,
 	};
 
 	return (

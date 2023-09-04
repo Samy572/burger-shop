@@ -8,9 +8,10 @@ import SubmitMessage from '../AdminPanel/SubmitMessage';
 
 export default function EditForm() {
 	// State
-	const { productSelected, setProductSelected, handleEdit } =
+	const { productSelected, setProductSelected, handleEdit, titleEditRef } =
 		useContext(OrderContext);
 	const inputTexts = getInputTextsConfig(productSelected);
+
 
 	// Comportement
 	const handleChange = (e) => {
@@ -37,6 +38,7 @@ export default function EditForm() {
 							{...input}
 							onChange={handleChange}
 							version="minimalist"
+							ref={input.name === 'title' ? titleEditRef : null}
 						/>
 					);
 				})}
