@@ -6,10 +6,28 @@ import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
+import { checkIfProductIsClicked } from './helper';
 export default function Menu() {
-	const { menu, isModeAdmin, resetMenu, handleDelete } =
-		useContext(OrderContext);
+	const {
+		menu,
+		isModeAdmin,
+		resetMenu,
+		handleDelete,
+		productSelected,
+		setProductSelected,
+		setisCollapsed,
+		setcurrentTabSelected,
+		titleEditRef,
+	} = useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
+
+	const handleClick = async (idProductSelected) => {
+		if (isModeAdmin) setisCollapsed(false);
+		setcurrentTabSelected('edit');
+		const productClickedOn = menu.find((el) => el.id === idProductSelected);
+		await setProductSelected(productClickedOn);
+		titleEditRef.current.focus();
+	};
 
 	if (menu.length === 0 && isModeAdmin)
 		return <EmptyMenuAdmin onClick={resetMenu} />;
@@ -26,8 +44,10 @@ export default function Menu() {
 						title={title}
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						leftDescription={formatPrice(price)}
-						hasDeleteButton={isModeAdmin}
+						isSelected={() => checkIfProductIsClicked(id, productSelected.id)}
 						onDelete={() => handleDelete(id)}
+						onClick={() => handleClick(id)}
+						hasDeleteButton={isModeAdmin}
 					/>
 				);
 			})}

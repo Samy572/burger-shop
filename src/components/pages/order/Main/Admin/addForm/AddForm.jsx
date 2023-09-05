@@ -1,95 +1,44 @@
 import { useContext, useState } from 'react';
-import styled from 'styled-components';
+import { EMPTY_PRODUCT } from '../../../../../../../enums/product';
+import Form from './Form';
 import OrderContext from '../../../../../../context/OrderContext';
-import TextInput from '../../../../../reusable-ui/TextInput';
-import PrimaryButton from '../../../../../reusable-ui/PrimaryButton.jsx';
-import ImagePreview from '../AdminPanel/ImagePreview';
-import SubmitMessage from '../AdminPanel/SubmitMessage';
-import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig.jsx';
+import SubmitButton from './SubmitButton';
 
 export default function AddForm() {
-	const { handleAdd, newProduct, setNewProduct, EMPTY_PRODUCT } =
-		useContext(OrderContext);
-	const [isSubmited, setisSubmited] = useState(false);
+	// state
+	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
-	const newProductToAdd = {
-		...newProduct,
-		// Unique id
-		id: crypto.randomUUID(),
-	};
+	// comportements
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const newProductToAdd = {
+			...newProduct,
+			id: crypto.randomUUID(),
+		};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
 		handleAdd(newProductToAdd);
 		setNewProduct(EMPTY_PRODUCT);
-		displaySucessMessage();
-	};
-	const displaySucessMessage = () => {
-		setisSubmited(true);
-		setTimeout(() => {
-			setisSubmited(false);
-		}, 2000);
+
+		displaySuccessMessage();
 	};
 
-	const handleChange = (e) => {
-		// dynamically proprety name
-		const { name, value } = e.target;
+	const handleChange = (event) => {
+		const { name, value } = event.target;
 		setNewProduct({ ...newProduct, [name]: value });
 	};
 
-	const inputTexts = getInputTextsConfig(newProduct);
+	const displaySuccessMessage = () => {
+		setIsSubmitted(true);
+		setTimeout(() => {
+			setIsSubmitted(false);
+		}, 2000);
+	};
 
+	// affichage
 	return (
-		<AddFormStyled onSubmit={handleSubmit}>
-			<ImagePreview
-				imageSource={newProduct.imageSource}
-				title={newProduct.title}
-			/>
-			<div className="input-fields">
-				{inputTexts.map((input) => {
-					return (
-						<TextInput
-							key={input.id}
-							{...input}
-							onChange={handleChange}
-							version="minimalist"
-						/>
-					);
-				})}
-			</div>
-			<div className="submit">
-				<PrimaryButton
-					label={'Ajouter un nouveau produit au menu'}
-					version={'success'}
-				/>
-				{isSubmited && <SubmitMessage />}
-			</div>
-		</AddFormStyled>
+		<Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
+			<SubmitButton isSubmitted={isSubmitted} />
+		</Form>
 	);
 }
-
-const AddFormStyled = styled.form`
-	height: 100%;
-	/* border: solid 1px black; */
-	width: 70%;
-	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-column-gap: 20px;
-	grid-template-rows: repeat(4, 1fr);
-	grid-row-gap: 8px;
-	padding-top: 10px;
-	margin-left: 50px;
-
-	.input-fields {
-		display: grid;
-		grid-area: 1/2/4/2;
-		grid-row-gap: 8px;
-	}
-	.submit {
-		display: grid;
-		grid-area: 4/-2/-1/-1;
-		display: flex;
-		align-items: center;
-		top: 3px;
-	}
-`;

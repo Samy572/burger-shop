@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
 
-export default function Button({
+export default function PrimaryButton({
 	Icon,
 	label,
 	className,

@@ -1,26 +1,33 @@
 import styled from 'styled-components';
-import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
+import PrimaryButton from './PrimaryButton.jsx';
 import { TiDelete } from 'react-icons/ti';
 
-export default function Product({
+export default function Card({
 	title,
 	imageSource,
 	leftDescription,
 	hasDeleteButton,
 	onDelete,
+	onClick,
 }) {
+	// state (vide)
+
+	// comportements (vide)
+
+	// affichage
 	return (
-		<ProductStyled className="produit">
+		<CardStyled className="produit" onClick={onClick}>
 			{hasDeleteButton && (
 				<button
-					onClick={onDelete}
 					className="delete-button"
 					aria-label="delete-button"
+					onClick={onDelete}
 				>
-					{<TiDelete className="icon" />}
+					<TiDelete className="icon" />
 				</button>
 			)}
+
 			<div className="image">
 				<img src={imageSource} alt={title} />
 			</div>
@@ -29,25 +36,36 @@ export default function Product({
 				<div className="description">
 					<div className="left-description">{leftDescription}</div>
 					<div className="right-description">
-						<PrimaryButton className={'primary-button'} label={'Ajouter'} />
+						<PrimaryButton
+							className="primary-button"
+							label={'Ajouter'}
+							onClick={(event) => event.stopPropagation()}
+						/>
 					</div>
 				</div>
 			</div>
-		</ProductStyled>
+		</CardStyled>
 	);
 }
 
-const ProductStyled = styled.div`
-	position: relative;
-	display: grid;
-	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-	background: ${theme.colors.white};
+const CardStyled = styled.div`
 	border-radius: ${theme.borderRadius.extraRound};
-	grid-template-rows: 65% 1fr;
 	height: 330px;
+
+	background: ${theme.colors.white};
+	box-sizing: border-box;
 	width: 240px;
-	padding: 20px 20px 10px 20px;
+	height: 330px;
+	display: grid;
+	grid-template-rows: 65% 1fr;
+	padding: 20px;
+	padding-bottom: 10px;
+	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+	border-radius: ${theme.borderRadius.extraRound};
+	position: relative;
+
 	.delete-button {
+		border: 10px solid red;
 		position: absolute;
 		top: 15px;
 		right: 15px;
@@ -61,11 +79,14 @@ const ProductStyled = styled.div`
 		background: none;
 
 		.icon {
+			/* border: 1px solid blue; */
 			height: 100%;
 			width: 100%;
 		}
+
 		:hover {
 			color: ${theme.colors.red};
+			/* background-color: red; */
 		}
 		:active {
 			color: ${theme.colors.primary};
@@ -84,6 +105,7 @@ const ProductStyled = styled.div`
 			object-fit: contain;
 		}
 	}
+
 	.text-info {
 		display: grid;
 		grid-template-rows: 30% 70%;

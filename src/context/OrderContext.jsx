@@ -16,7 +16,14 @@ export default createContext({
 	handleDelete: () => {},
 	resetMenu: () => {},
 
-	newProduct: [],
+	newProduct: {},
 	setNewProduct: () => {},
 	EMPTY_PRODUCT: {},
+	productSelected: {},
+	setProductSelected: () => {},
+
+	handleEdit: () => {},
+	
+  // useRef
+	titleEditRef: {},
 });
