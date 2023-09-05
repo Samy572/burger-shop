@@ -24,7 +24,7 @@ const Form = React.forwardRef(
 						/>
 					))}
 				</div>
-				<div className="form-footer">{children}</div>
+				<div className="form-footer">{children && children}</div>
 			</FormStyled>
 		);
 	}
