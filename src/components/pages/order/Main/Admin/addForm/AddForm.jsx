@@ -1,9 +1,8 @@
 import { useContext, useState } from 'react';
 import { EMPTY_PRODUCT } from '../../../../../../../enums/product';
-import PrimaryButton from '../../../../../reusable-ui/PrimaryButton.jsx';
 import Form from './Form';
-import SubmitMessage from './../AdminPanel/SubmitMessage.jsx';
 import OrderContext from '../../../../../../context/OrderContext';
+import SubmitButton from './SubmitButton';
 
 export default function AddForm() {
 	// state
@@ -39,14 +38,7 @@ export default function AddForm() {
 	// affichage
 	return (
 		<Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
-			<>
-				<PrimaryButton
-					className="submit-button"
-					label={'Ajouter un nouveau produit au menu'}
-					version="success"
-				/>
-				{isSubmitted && <SubmitMessage />}
-			</>
+			<SubmitButton isSubmitted={isSubmitted} />
 		</Form>
 	);
 }

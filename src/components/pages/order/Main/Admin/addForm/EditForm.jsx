@@ -8,17 +8,17 @@ export default function EditForm() {
 	const { productSelected, setProductSelected, handleEdit, titleEditRef } =
 		useContext(OrderContext);
 
-	// comportements (gestionnaires d'événement ou "event handlers")
+	// comportements 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 
 		const productBeingUpdated = {
-			...productSelected,
+			...productSelected, 
 			[name]: value,
 		};
 
-		setProductSelected(productBeingUpdated); // cette ligne update le formulaire
-		handleEdit(productBeingUpdated, event); // cette ligne update le menu
+		setProductSelected(productBeingUpdated); // update le formulaire
+		handleEdit(productBeingUpdated, event); // update le menu
 	};
 
 	// affichage
