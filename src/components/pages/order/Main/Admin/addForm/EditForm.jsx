@@ -1,85 +1,30 @@
-import styled from 'styled-components';
 import { useContext } from 'react';
-import OrderContext from '../../../../../../context/OrderContext';
-import ImagePreview from '../AdminPanel/ImagePreview';
-import TextInput from '../../../../../reusable-ui/TextInput';
-import { getInputTextsConfig } from '../AdminPanel/getInputTextsConfig';
-import { theme } from '../../../../../../theme';
-import EditInfoMessage from '../AdminPanel/EditMessage';
+import OrderContext from '../../../../../../context/OrderContext.jsx';
+import Form from './Form';
+import EditInfoMessage from './EditInfoMessage.jsx';
 
 export default function EditForm() {
-	// State
+	// state
 	const { productSelected, setProductSelected, handleEdit, titleEditRef } =
 		useContext(OrderContext);
-	const inputTexts = getInputTextsConfig(productSelected);
 
-	// Comportement
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		const productBeingUpdate = {
+	// comportements (gestionnaires d'événement ou "event handlers")
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+
+		const productBeingUpdated = {
 			...productSelected,
 			[name]: value,
 		};
-		setProductSelected(productBeingUpdate);
-		handleEdit(productBeingUpdate);
+
+		setProductSelected(productBeingUpdated); // cette ligne update le formulaire
+		handleEdit(productBeingUpdated, event); // cette ligne update le menu
 	};
 
+	// affichage
 	return (
-		<EditFormStyled>
-			<ImagePreview
-				imageSource={productSelected.imageSource}
-				title={productSelected.title}
-			/>
-			<div className="input-fields">
-				{inputTexts.map((input) => {
-					return (
-						<TextInput
-							key={input.id}
-							{...input}
-							onChange={handleChange}
-							version="minimalist"
-							ref={input.name === 'title' ? titleEditRef : null}
-						/>
-					);
-				})}
-			</div>
-			<div className="submit">
-				<EditInfoMessage />
-			</div>
-		</EditFormStyled>
+		<Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+			<EditInfoMessage />
+		</Form>
 	);
 }
-
-const EditFormStyled = styled.div`
-	height: 100%;
-	/* border: solid 1px black; */
-	width: 70%;
-	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-column-gap: 20px;
-	grid-template-rows: repeat(4, 1fr);
-	grid-row-gap: 8px;
-	padding-top: 10px;
-	margin-left: 50px;
-
-	.input-fields {
-		display: grid;
-		grid-area: 1/2/4/2;
-		grid-row-gap: 8px;
-	}
-	.submit {
-		display: grid;
-		grid-area: 4/-2/-1/-1;
-		display: flex;
-		align-items: center;
-		top: 3px;
-
-		.sentence {
-			color: ${theme.colors.primary};
-			font-size: ${theme.fonts.size.SM};
-			.live-update {
-				text-decoration: underline;
-			}
-		}
-	}
-`;
