@@ -51,7 +51,6 @@ export default function Card({
 const CardStyled = styled.div`
 	border-radius: ${theme.borderRadius.extraRound};
 	height: 330px;
-
 	background: ${theme.colors.white};
 	box-sizing: border-box;
 	width: 240px;
