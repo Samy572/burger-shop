@@ -3,14 +3,14 @@ import { theme } from '../../../../../theme';
 
 export default function Content() {
 	return (
-		<BasketBodyStyled>
+		<BasketProductsStyled>
 			{' '}
 			<span className="empty-message">votre commande est vide.</span>
-		</BasketBodyStyled>
+		</BasketProductsStyled>
 	);
 }
 
-const BasketBodyStyled = styled.div`
+const BasketProductsStyled = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;

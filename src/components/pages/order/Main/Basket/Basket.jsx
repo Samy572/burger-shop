@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Total from './Total';
 import { formatPrice } from '../../../../../utils/math';
 import Footer from './Footer';
-import BasketBody from './BasketBody';
+import BasketProducts from './BasketProducts';
 export default function Basket() {
 	return (
 		<BasketStyled>
 			<Total amountToPay={formatPrice(0)} />
-			<BasketBody />
+			<BasketProducts />
 			<Footer />
 		</BasketStyled>
 	);
