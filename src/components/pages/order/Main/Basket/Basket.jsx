@@ -10,11 +10,12 @@ export default function Basket() {
 	// State
 	const { basket } = useContext(OrderContext);
 
+	const isBasketEmpty = basket.length === 0;
+
 	return (
 		<BasketStyled>
 			<Total amountToPay={formatPrice(0)} />
-			{/* <BasketProducts basket={basket} /> */}
-			{<EmptyBasket basket={basket} />}
+			{isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
 			<Footer />
 		</BasketStyled>
 	);
