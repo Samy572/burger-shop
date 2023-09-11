@@ -32,9 +32,10 @@ const BasketCardStyled = styled.div`
 	height: 86px;
 	padding: 8px 16px;
 	display: grid;
+	align-items: center;
 	grid-template-columns: 30% 1fr;
 	overflow-y: hidden;
-
+	margin-bottom: 10px;
 	border-radius: ${theme.borderRadius.round};
 	background: ${theme.colors.white};
 	box-shadow: ${theme.shadows.cardBasket};
@@ -44,9 +45,9 @@ const BasketCardStyled = styled.div`
 	.image {
 		box-sizing: border-box;
 		height: 70px;
-		border: 1px solid red;
 		overflow: hidden;
-
+		display: flex;
+		align-items: center;
 		img {
 			padding: 5px;
 			box-sizing: border-box;
@@ -72,6 +73,8 @@ const BasketCardStyled = styled.div`
 			margin-left: 21px;
 			/* align-items: center; */
 			.title {
+				overflow: hidden;
+
 				display: flex;
 				align-items: center;
 				/* background: yellow; */

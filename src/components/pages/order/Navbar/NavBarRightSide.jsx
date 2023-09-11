@@ -3,7 +3,6 @@ import Profile from './Profile';
 import ToggleButton from '../../../reusable-ui/ToggleButton.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import { theme } from '../../../../theme';
 import AdminToast from './AdminToast';
 import OrderContext from '../../../../context/OrderContext';
 import { useContext } from 'react';
@@ -44,6 +43,7 @@ export default function NavBarRightSide() {
 }
 
 const NavBarRightSideStyled = styled.div`
+	overflow: hidden;
 	display: flex;
 	align-items: center;
 	padding-right: 50px;

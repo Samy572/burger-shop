@@ -18,7 +18,7 @@ const EmptyBasketStylde = styled.div`
 		display: flex;
 		height: calc(95vh - 10vh - 70px - 70px);
 		text-align: center;
-		flex: 1;
+		/* flex: 1; */
 		justify-content: center;
 		align-items: center;
 		align-self: center;
