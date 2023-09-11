@@ -1,3 +1,5 @@
+import { EMPTY_PRODUCT } from '../../enums/product';
+
 export const EMPTY = [];
 
 export const SMALL = [
@@ -42,6 +44,16 @@ export const MEDIUM = [
 ];
 
 export const LARGE = [
+	{
+		id: '0',
+		imageSource: '',
+		title: '',
+		price: 0,
+		quantity: 0,
+		isAvailable: true,
+		isAdvertised: false,
+	},
+
 	{
 		id: '1',
 		imageSource: '/img/fries3.webp',
@@ -135,6 +147,11 @@ export const LARGE = [
 ];
 
 export const LARGE_WEIRD = [
+	{
+		...EMPTY_PRODUCT,
+		quantity: 1,
+	},
+
 	{
 		id: '1',
 		imageSource: '/img/fries3.webp',

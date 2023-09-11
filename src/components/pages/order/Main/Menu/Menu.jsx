@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { checkIfProductIsClicked } from './helper';
+import { IMAGE_COMMING_SOON } from '../../../../../../enums/product';
 export default function Menu() {
 	const {
 		menu,
@@ -19,7 +20,6 @@ export default function Menu() {
 		setcurrentTabSelected,
 		titleEditRef,
 	} = useContext(OrderContext);
-	const IMAGE_BY_DEFAULT = '/img/coming-soon.png';
 
 	const handleClick = async (idProductSelected) => {
 		if (isModeAdmin) setisCollapsed(false);
@@ -42,7 +42,7 @@ export default function Menu() {
 					<Card
 						key={id}
 						title={title}
-						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+						imageSource={imageSource ? imageSource : IMAGE_COMMING_SOON}
 						leftDescription={formatPrice(price)}
 						isSelected={() => checkIfProductIsClicked(id, productSelected.id)}
 						onDelete={() => handleDelete(id)}

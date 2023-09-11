@@ -28,11 +28,16 @@ const BasketStyled = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-bottom-left-radius: ${theme.borderRadius.extraRound};
-	overflow-y: hidden;
-	.head {
+
+	::-webkit-scrollbar {
+		width: 0.2em;
+	}
+
+
+	/* .head {
 		position: sticky;
 		top: 0;
-	}
+	} */
 
 	.footer {
 		border-bottom-left-radius: ${theme.borderRadius.extraRound};

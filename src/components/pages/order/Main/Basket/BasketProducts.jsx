@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
+import { IMAGE_COMMING_SOON } from '../../../../../../enums/product';
 
 export default function BasketProducts({ products }) {
 	return (
 		<BasketProductsStyled>
 			<div className="basket-card">
 				{products.map((product) => {
-					return <BasketCard key={product.id} {...product} />;
+					return <BasketCard key={product.id} {...product} imageSource={product.imageSource ? product.imageSource : IMAGE_COMMING_SOON} />;
 				})}
 			</div>
 		</BasketProductsStyled>
@@ -18,12 +19,10 @@ const BasketProductsStyled = styled.div`
 	display: flex;
 	flex-direction: column;
 	.basket-card {
-		/* border: 1px solid blue; */
 		margin: 10px 16px;
 		box-sizing: border-box;
 		:first-child {
 			margin-top: 20px;
-			/* border: 1px solid red; */
 		}
 		:last-child {
 			margin-bottom: 20px;

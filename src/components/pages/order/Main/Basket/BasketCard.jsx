@@ -28,14 +28,16 @@ export default function BasketCard({ imageSource, price, title, quantity }) {
 }
 
 const BasketCardStyled = styled.div`
+	margin-right: 10px;
 	box-sizing: border-box;
 	height: 86px;
-	padding: 8px 16px;
+	padding: 8px 10px;
 	display: grid;
 	align-items: center;
 	grid-template-columns: 30% 1fr;
 	overflow-y: hidden;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+	cursor: pointer;
 	border-radius: ${theme.borderRadius.round};
 	background: ${theme.colors.white};
 	box-shadow: ${theme.shadows.cardBasket};
@@ -103,6 +105,7 @@ const BasketCardStyled = styled.div`
 		}
 
 		.quantity {
+			margin: 0;
 			box-sizing: border-box;
 			/* border: 1px solid lightblue; */
 			/* background: lightblue; */
