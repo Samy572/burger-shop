@@ -43,6 +43,7 @@ export default function AdminTabs() {
 const AdminTabsStyled = styled.div`
 	display: flex;
 	padding: 0 20px;
+	overflow: hidden;
 
 	.is-active {
 		background-color: ${theme.colors.background_dark};

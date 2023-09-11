@@ -10,13 +10,21 @@ export default function EmptyBasket() {
 }
 
 const EmptyBasketStylde = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	flex: 1;
-	font-size: ${theme.fonts.size.P4};
-	font-family: ${theme.fonts.family.stylish};
-	color: ${theme.colors.greyBlue};
+	background: ${theme.colors.background_white};
 	box-shadow: ${theme.shadows.basket};
-	line-height: 2;
+
+	.empty-message {
+		display: flex;
+		height: calc(95vh - 10vh - 70px - 70px);
+		text-align: center;
+		flex: 1;
+		justify-content: center;
+		align-items: center;
+		align-self: center;
+		line-height: 2;
+		font-family: ${theme.fonts.family.stylish};
+		font-size: ${theme.fonts.size.P4};
+		color: ${theme.colors.greyBlue};
+	}
 `;

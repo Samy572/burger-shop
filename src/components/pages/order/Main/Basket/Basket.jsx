@@ -6,24 +6,38 @@ import BasketProducts from './BasketProducts';
 import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 import EmptyBasket from './EmptyBasket';
+import { theme } from '../../../../../theme';
 export default function Basket() {
 	// State
 	const { basket } = useContext(OrderContext);
 
 	const isBasketEmpty = basket.length === 0;
-
+	console.log(isBasketEmpty);
 	return (
 		<BasketStyled>
 			<Total amountToPay={formatPrice(0)} />
-			{isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
+			{isBasketEmpty ? <EmptyBasket /> : <BasketProducts products={basket} />}
 			<Footer />
 		</BasketStyled>
 	);
 }
 
 const BasketStyled = styled.div`
-	display: flex;
-	height: 100%;
+	background: ${theme.colors.background_white};
+	box-shadow: ${theme.shadows.basket};
 	flex-direction: column;
-	text-transform: uppercase;
+	border-bottom-left-radius: ${theme.borderRadius.extraRound};
+	height: 85vh;
+	overflow: hidden;
+
+	.head {
+		position: sticky;
+		top: 0;
+	}
+
+	.footer {
+		border-bottom-left-radius: ${theme.borderRadius.extraRound};
+		position: sticky;
+		bottom: 0;
+	}
 `;

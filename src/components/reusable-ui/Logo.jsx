@@ -15,8 +15,10 @@ const LogoStyled = styled.div`
 	color: ${theme.colors.white};
 	display: flex;
 	align-items: center;
+	overflow: hidden;
 
 	h1 {
+		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		color: ${theme.colors.primary};

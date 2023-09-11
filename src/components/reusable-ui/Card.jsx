@@ -64,6 +64,7 @@ const CardStyled = styled.div`
 	position: relative;
 
 	.delete-button {
+		overflow: hidden;
 		border: 10px solid red;
 		position: absolute;
 		top: 15px;
@@ -93,6 +94,7 @@ const CardStyled = styled.div`
 	}
 
 	.image {
+		overflow: hidden;
 		width: 100%;
 		height: auto;
 		margin-top: 30px;
