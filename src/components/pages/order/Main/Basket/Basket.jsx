@@ -12,6 +12,8 @@ export default function Basket() {
 	const { basket } = useContext(OrderContext);
 
 	const isBasketEmpty = basket.length === 0;
+	// const totalToPay = basket.reduce((acc, cur) => acc + cur);
+
 	console.log(isBasketEmpty);
 	return (
 		<BasketStyled>
@@ -32,7 +34,6 @@ const BasketStyled = styled.div`
 	::-webkit-scrollbar {
 		width: 0.2em;
 	}
-
 
 	/* .head {
 		position: sticky;

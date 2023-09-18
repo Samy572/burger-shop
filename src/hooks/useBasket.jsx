@@ -1,44 +1,41 @@
 import { useState } from 'react';
 import { fakeBasket } from '../data/fakeBasket';
-import { deepClone, findInArray, getIndex } from '../utils/array';
+import { deepClone, findObjectById, findIndexById } from '../utils/array';
 
 export const useBasket = () => {
 	const [basket, setBasket] = useState(fakeBasket.EMPTY);
-	const handleAddToBasket = (productToAdd) => {
+
+	const handleAddToBasket = (idProductToAdd) => {
 		const basketCopy = deepClone(basket);
-
-		const productFoundInBasket = findInArray(
-			productToAdd.id,
-			handleAddToBasket
-		);
-
-		// Le produit n'est pas trouvé dans le basket
-		if (!productFoundInBasket) {
-			addNewProductInBasket(productToAdd, basketCopy, setBasket);
+		const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy);
+		if (productAlreadyInBasket) {
+			incrementProductAlreadyInBasket(idProductToAdd, basketCopy, setBasket);
 			return;
 		}
-		// Si le produit est déjà dans le basket qtt+=1
 
-		IncrementProductAlreadyInBasket(productToAdd, basketCopy);
-
-		const IncrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
-			const indexBasketProductToIncrement = getIndex(
-				productToAdd.id,
-				basketCopy
-			);
-			basketCopy[indexBasketProductToIncrement].quantity += 1;
-			setBasket(basketCopy);
-		};
+		createNewBasketProduct(idProductToAdd, basketCopy, setBasket);
 	};
-	const addNewProductInBasket = (productToAdd, basketCopy, setBasket) => {
-		const newBasketProduct = {
-			...productToAdd,
-			quantity: 1,
-		};
-		const basketUpdated = [newBasketProduct, ...basketCopy];
 
-		setBasket(basketUpdated);
+	const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
+		const indexOfBasketProductToIncrement = findIndexById(
+			idProductToAdd,
+			basketCopy
+		);
+		basketCopy[indexOfBasketProductToIncrement].quantity += 1;
+		setBasket(basketCopy);
 	};
+
+	const createNewBasketProduct = (idProductToAdd, basketCopy, setBasket) => {
+		// we do not re-create a whole product, we only add the extra info a basket product has in comparison to a menu product
+		const newBasketProduct = { id: idProductToAdd, quantity: 1 };
+		const newBasket = [newBasketProduct, ...basketCopy];
+		setBasket(newBasket);
+	};
+
+	// const handleDeleteBasketProduct = (idBasketProduct) => {
+	// 	const basketUpdated = removeObjectById(idBasketProduct, basket);
+	// 	setBasket(basketUpdated);
+	// };
 
 	return { basket, handleAddToBasket };
 };

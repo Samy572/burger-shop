@@ -8,7 +8,7 @@ import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { checkIfProductIsClicked } from './helper';
 import { IMAGE_COMMING_SOON } from '../../../../../../enums/product';
-import { findInArray } from '../../../../../utils/array';
+import { findObjectById } from '../../../../../utils/array';
 export default function Menu() {
 	const {
 		menu,
@@ -26,7 +26,7 @@ export default function Menu() {
 	const handleClick = async (idProductSelected) => {
 		if (isModeAdmin) setisCollapsed(false);
 		setcurrentTabSelected('edit');
-		const productClickedOn = findInArray(idProductSelected, menu);
+		const productClickedOn = findObjectById(idProductSelected, menu);
 		await setProductSelected(productClickedOn);
 		titleEditRef.current.focus();
 	};
