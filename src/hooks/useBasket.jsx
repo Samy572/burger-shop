@@ -14,13 +14,7 @@ export const useBasket = () => {
 
 		// Le produit n'est pas trouvé dans le basket
 		if (!productFoundInBasket) {
-			const newBasketProduct = {
-				...productToAdd,
-				quantity: 1,
-			};
-			const basketUpdated = [newBasketProduct, ...basketCopy];
-
-			setBasket(basketUpdated);
+			addNewProductInBasket(productToAdd, basketCopy, setBasket);
 			return;
 		}
 		// Si le produit est déjà dans le basket qtt+=1
@@ -35,6 +29,15 @@ export const useBasket = () => {
 			basketCopy[indexBasketProductToIncrement].quantity += 1;
 			setBasket(basketCopy);
 		};
+	};
+	const addNewProductInBasket = (productToAdd, basketCopy, setBasket) => {
+		const newBasketProduct = {
+			...productToAdd,
+			quantity: 1,
+		};
+		const basketUpdated = [newBasketProduct, ...basketCopy];
+
+		setBasket(basketUpdated);
 	};
 
 	return { basket, handleAddToBasket };
