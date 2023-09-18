@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { fakeBasket } from '../data/fakeBasket';
-import { deepClone, findInArray } from '../utils/array';
+import { deepClone, findInArray, getIndex } from '../utils/array';
 
 export const useBasket = () => {
 	const [basket, setBasket] = useState(fakeBasket.EMPTY);
 	const handleAddToBasket = (productToAdd) => {
 		const basketCopy = deepClone(basket);
 
-		const isProductAlreadyInbasket = findInArray(
+		const productFoundInBasket = findInArray(
 			productToAdd.id,
 			handleAddToBasket
 		);
 
-		// Le produit n'est pas dans le basket
-		if (!isProductAlreadyInbasket) {
+		// Le produit n'est pas trouvé dans le basket
+		if (!productFoundInBasket) {
 			const newBasketProduct = {
 				...productToAdd,
 				quantity: 1,
@@ -22,17 +22,15 @@ export const useBasket = () => {
 
 			setBasket(basketUpdated);
 			return;
-		} else {
-			const indexOfBasketProductToIncrement = (basket.findIndex = (
-				basketProduct
-			) => basketProduct.id === productToAdd.id);
-			const basketUpdated = (basketCopy[
-				indexOfBasketProductToIncrement
-			].quantity += 1);
-			setBasket(basketUpdated);
 		}
+		// Si le produit est déjà dans le basket qtt+=1
 
-		// Le produit est déjà dans le basket
+		const indexBasketProductToIncrement = basket.getIndex(
+			productToAdd.id,
+			basketCopy
+		);
+		basketCopy[indexBasketProductToIncrement].quantity += 1;
+		setBasket(basketCopy);
 	};
 
 	return { basket, handleAddToBasket };
