@@ -8,6 +8,7 @@ import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { checkIfProductIsClicked } from './helper';
 import { IMAGE_COMMING_SOON } from '../../../../../../enums/product';
+import { findInArray } from '../../../../../utils/array';
 export default function Menu() {
 	const {
 		menu,
@@ -19,12 +20,13 @@ export default function Menu() {
 		setisCollapsed,
 		setcurrentTabSelected,
 		titleEditRef,
+		handleAddToBasket,
 	} = useContext(OrderContext);
 
 	const handleClick = async (idProductSelected) => {
 		if (isModeAdmin) setisCollapsed(false);
 		setcurrentTabSelected('edit');
-		const productClickedOn = menu.find((el) => el.id === idProductSelected);
+		const productClickedOn = findInArray(idProductSelected, menu);
 		await setProductSelected(productClickedOn);
 		titleEditRef.current.focus();
 	};
@@ -33,6 +35,13 @@ export default function Menu() {
 		return <EmptyMenuAdmin onClick={resetMenu} />;
 
 	if (menu.length === 0 && !isModeAdmin) return <EmptyMenuClient />;
+
+	const handleAddButton = (event, idProductToAdd) => {
+		event.stopPropagation();
+		const productToAdd = findInArray(idProductToAdd, menu);
+		console.log(productToAdd);
+		handleAddToBasket(productToAdd);
+	};
 
 	return (
 		// Map destructuring menu + hydratation du component
@@ -48,6 +57,7 @@ export default function Menu() {
 						onDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
 						hasDeleteButton={isModeAdmin}
+						onAdd={(event) => handleAddButton(event, id)}
 					/>
 				);
 			})}

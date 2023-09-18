@@ -19,7 +19,7 @@ const OrderPage = () => {
 
 	// Comportement appel du custom hook useMenu et useBasket
 	const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
-	const { basket, setBasket } = useBasket();
+	const { basket, setBasket, handleAddToBasket } = useBasket();
 
 	const orderContextValue = {
 		isModeAdmin,
@@ -41,6 +41,7 @@ const OrderPage = () => {
 		titleEditRef,
 		basket,
 		setBasket,
+		handleAddToBasket,
 	};
 
 	return (

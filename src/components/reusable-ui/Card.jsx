@@ -10,6 +10,7 @@ export default function Card({
 	hasDeleteButton,
 	onDelete,
 	onClick,
+	onAdd,
 }) {
 	// state (vide)
 
@@ -39,7 +40,7 @@ export default function Card({
 						<PrimaryButton
 							className="primary-button"
 							label={'Ajouter'}
-							onClick={(event) => event.stopPropagation()}
+							onClick={onAdd}
 						/>
 					</div>
 				</div>
@@ -62,6 +63,7 @@ const CardStyled = styled.div`
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 	border-radius: ${theme.borderRadius.extraRound};
 	position: relative;
+	transition: all 0.2s;
 
 	.delete-button {
 		overflow: hidden;
@@ -156,5 +158,8 @@ const CardStyled = styled.div`
 				}
 			}
 		}
+	}
+	&:hover {
+		box-shadow: ${theme.shadows.orangeHighlight};
 	}
 `;
