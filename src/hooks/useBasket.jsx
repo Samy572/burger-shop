@@ -25,12 +25,16 @@ export const useBasket = () => {
 		}
 		// Si le produit est déjà dans le basket qtt+=1
 
-		const indexBasketProductToIncrement = basket.getIndex(
-			productToAdd.id,
-			basketCopy
-		);
-		basketCopy[indexBasketProductToIncrement].quantity += 1;
-		setBasket(basketCopy);
+		IncrementProductAlreadyInBasket(productToAdd, basketCopy);
+
+		const IncrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+			const indexBasketProductToIncrement = getIndex(
+				productToAdd.id,
+				basketCopy
+			);
+			basketCopy[indexBasketProductToIncrement].quantity += 1;
+			setBasket(basketCopy);
+		};
 	};
 
 	return { basket, handleAddToBasket };
