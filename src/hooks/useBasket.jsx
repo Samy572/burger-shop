@@ -21,7 +21,15 @@ export const useBasket = () => {
 			const basketUpdated = [newBasketProduct, ...basketCopy];
 
 			setBasket(basketUpdated);
-			return; 
+			return;
+		} else {
+			const indexOfBasketProductToIncrement = (basket.findIndex = (
+				basketProduct
+			) => basketProduct.id === productToAdd.id);
+			const basketUpdated = (basketCopy[
+				indexOfBasketProductToIncrement
+			].quantity += 1);
+			setBasket(basketUpdated);
 		}
 
 		// Le produit est déjà dans le basket
