@@ -9,9 +9,9 @@ import { checkIfProductIsClicked } from '../Menu/helper';
 export default function BasketProducts() {
 	const {
 		basket,
+		isModeAdmin,
 		menu,
 		handleDeleteBasketProduct,
-		isModeAdmin,
 		handleProductSelected,
 		productSelected,
 	} = useContext(OrderContext);

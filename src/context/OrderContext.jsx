@@ -15,14 +15,15 @@ export default createContext({
 	setMenu: () => {},
 	handleDelete: () => {},
 	resetMenu: () => {},
+	handleEdit: () => {},
 
 	newProduct: {},
 	setNewProduct: () => {},
 	EMPTY_PRODUCT: {},
+
 	productSelected: {},
 	setProductSelected: () => {},
-
-	handleEdit: () => {},
+	handleProductSelected: () => {},
 
 	// useRef
 	titleEditRef: {},

@@ -51,11 +51,12 @@ export default function Menu() {
 						title={title}
 						imageSource={imageSource ? imageSource : IMAGE_COMMING_SOON}
 						leftDescription={formatPrice(price)}
-						isSelected={() => checkIfProductIsClicked(id, productSelected.id)}
 						onDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
 						hasDeleteButton={isModeAdmin}
+						isSelected={checkIfProductIsClicked(id, productSelected.id)}
 						onAdd={(event) => handleAddButton(event, id)}
+						isHoverable={isModeAdmin}
 					/>
 				);
 			})}
