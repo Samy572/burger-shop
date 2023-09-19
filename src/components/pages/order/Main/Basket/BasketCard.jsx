@@ -1,11 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../../../../theme';
 import { MdDeleteForever } from 'react-icons/md';
 import { formatPrice } from '../../../../../utils/math';
 
-export default function BasketCard({ imageSource, price, title, quantity }) {
+export default function BasketCard({
+	imageSource,
+	price,
+	title,
+	quantity,
+	isModeAdmin,
+}) {
 	return (
-		<BasketCardStyled>
+		<BasketCardStyled isModeAdmin={isModeAdmin}>
 			<div className="delete-button">
 				<MdDeleteForever className="icon" />
 			</div>
@@ -41,8 +47,12 @@ const BasketCardStyled = styled.div`
 	border-radius: ${theme.borderRadius.round};
 	background: ${theme.colors.white};
 	box-shadow: ${theme.shadows.cardBasket};
-
 	position: relative;
+
+	.delete-button {
+		display: none;
+		z-index: 1;
+	}
 
 	.image {
 		box-sizing: border-box;
@@ -117,19 +127,11 @@ const BasketCardStyled = styled.div`
 			font-size: ${theme.fonts.size.SM};
 		}
 	}
-
-	.delete-button {
-		display: none;
-		z-index: 1;
-	}
-
-	/* hover de la card */
-	:hover {
+	&:hover {
 		.delete-button {
-			/* border: 1px solid red; */
-			border: none;
-			box-sizing: border-box;
+			display: block;
 			position: absolute;
+			box-sizing: border-box;
 			top: 0;
 			right: 0;
 			bottom: 0;
@@ -137,6 +139,7 @@ const BasketCardStyled = styled.div`
 			border-top-right-radius: ${theme.borderRadius.round};
 			border-bottom-right-radius: ${theme.borderRadius.round};
 			padding: 10px;
+			margin-top: 0;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -148,18 +151,20 @@ const BasketCardStyled = styled.div`
 				width: ${theme.fonts.size.P3};
 				height: ${theme.fonts.size.P3};
 			}
-
-			/* behaviour on delete-button hover */
-			:hover {
-				.icon {
-					color: ${theme.colors.dark};
-				}
-				:active {
-					.icon {
-						color: ${theme.colors.white};
-					}
-				}
-			}
 		}
 	}
 `;
+// const isModeAdminStyle = css`
+// 	.delete-button {
+// 		width: 20px;
+// 		height: 20px;
+// 		display: none;
+// 		z-index: 1;
+// 		&:hover {
+// 			position: absolute;
+// 			right: 10px;
+// 			display: flex;
+// 			background-color: red;
+// 		}
+// 	}
+// `;

@@ -6,11 +6,7 @@ import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 
 export default function BasketProducts() {
-	const {
-		basket,
-
-		menu,
-	} = useContext(OrderContext);
+	const { basket, isModeAdmin, menu } = useContext(OrderContext);
 
 	return (
 		<BasketProductsStyled>
@@ -28,6 +24,7 @@ export default function BasketProducts() {
 									? menuProduct.imageSource
 									: IMAGE_COMMING_SOON
 							}
+							isModeAdmin={isModeAdmin}
 						/>
 					);
 				})}
