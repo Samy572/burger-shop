@@ -4,31 +4,52 @@ import { IMAGE_COMMING_SOON } from '../../../../../../enums/product';
 import { findObjectById } from '../../../../../utils/array';
 import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
+import { checkIfProductIsClicked } from '../Menu/helper';
 
 export default function BasketProducts() {
-	const { basket, isModeAdmin, menu } = useContext(OrderContext);
+	const {
+		basket,
+		menu,
+		handleDeleteBasketProduct,
+		isModeAdmin,
+		handleProductSelected,
+		productSelected,
+	} = useContext(OrderContext);
+
+	const handleOnDelete = (event, productToDelete) => {
+		event.stopPropagation();
+		handleDeleteBasketProduct(productToDelete);
+	};
 
 	return (
 		<BasketProductsStyled>
-			<div className="basket-card">
-				{basket.map((product) => {
-					const menuProduct = findObjectById(product.id, menu);
-
-					return (
+			{basket.map((basketProduct) => {
+				const menuProduct = findObjectById(basketProduct.id, menu);
+				return (
+					<div className="basket-card" key={basketProduct.id}>
 						<BasketCard
-							key={product.id}
 							{...menuProduct}
-							quantity={product.quantity}
 							imageSource={
 								menuProduct.imageSource
 									? menuProduct.imageSource
 									: IMAGE_COMMING_SOON
 							}
-							isModeAdmin={isModeAdmin}
+							quantity={basketProduct.quantity}
+							onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+							isClickable={isModeAdmin}
+							onClick={
+								isModeAdmin
+									? () => handleProductSelected(basketProduct.id)
+									: null
+							}
+							isSelected={checkIfProductIsClicked(
+								basketProduct.id,
+								productSelected.id
+							)}
 						/>
-					);
-				})}
-			</div>
+					</div>
+				);
+			})}
 		</BasketProductsStyled>
 	);
 }

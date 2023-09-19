@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { fakeBasket } from '../data/fakeBasket';
-import { deepClone, findObjectById, findIndexById } from '../utils/array';
+import {
+	deepClone,
+	findObjectById,
+	findIndexById,
+	removeObjectById,
+} from '../utils/array';
 
 export const useBasket = () => {
 	const [basket, setBasket] = useState(fakeBasket.EMPTY);
@@ -32,10 +37,11 @@ export const useBasket = () => {
 		setBasket(newBasket);
 	};
 
-	// const handleDeleteBasketProduct = (idBasketProduct) => {
-	// 	const basketUpdated = removeObjectById(idBasketProduct, basket);
-	// 	setBasket(basketUpdated);
-	// };
+	const handleDeleteBasketProduct = (idBasketProduct) => {
+		const basketCopy = deepClone(basket);
+		const basketUpdated = removeObjectById(idBasketProduct, basketCopy);
+		setBasket(basketUpdated);
+	};
 
-	return { basket, handleAddToBasket };
+	return { basket, handleAddToBasket, handleDeleteBasketProduct };
 };
