@@ -13,13 +13,15 @@ export default function Footer() {
 }
 
 const FooterStyled = styled.div`
-	text-transform: uppercase;
 	height: 100%;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: ${theme.colors.white};
-	font-family: ${theme.fonts.family.stylish};
-	font-size: ${theme.fonts.size.P2};
+	span {
+		font-size: ${theme.fonts.size.P2};
+		font-family: ${theme.fonts.family.stylish};
+		font-weight: ${theme.fonts.weights.bold};
+		color: ${theme.colors.white};
+	}
 `;

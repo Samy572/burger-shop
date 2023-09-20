@@ -63,6 +63,10 @@ const normalStyle = css`
 		justify-content: center;
 		align-items: center;
 	}
+
+	span {
+		overflow: hidden;
+	}
 `;
 
 const succesStyle = css`

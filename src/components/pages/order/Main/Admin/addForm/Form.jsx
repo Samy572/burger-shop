@@ -41,6 +41,7 @@ const FormStyled = styled.form`
 	width: 70%;
 	grid-column-gap: 20px;
 	grid-row-gap: 8px;
+	overflow: hidden;
 
 	.input-fields {
 		/* background: blue; */
