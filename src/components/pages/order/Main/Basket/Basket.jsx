@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 import Total from './Total';
-import { formatPrice } from '../../../../../utils/math';
 import Footer from './Footer';
 import BasketProducts from './BasketProducts';
 import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 import EmptyBasket from './EmptyBasket';
 import { theme } from '../../../../../theme';
+import { isEmpty } from '../../../../../utils/array';
 export default function Basket() {
 	// State
 	const { basket } = useContext(OrderContext);
 
-	const isBasketEmpty = basket.length === 0;
-
 	return (
 		<BasketStyled>
-			<Total amountToPay={formatPrice(0)} />
-			{isBasketEmpty ? <EmptyBasket /> : <BasketProducts products={basket} />}
+			<Total />
+			{isEmpty(basket) ? <EmptyBasket /> : <BasketProducts products={basket} />}
 			<Footer />
 		</BasketStyled>
 	);

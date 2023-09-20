@@ -15,3 +15,7 @@ export const findIndexById = (idWithUnknowwIndex, array) => {
 export const removeObjectById = (idOfItemToRemove, array) => {
 	return array.filter((item) => item.id !== idOfItemToRemove);
 };
+
+export const isEmpty = (array) => {
+	return array.length === 0;
+};
