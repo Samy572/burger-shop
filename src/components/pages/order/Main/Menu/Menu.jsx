@@ -7,56 +7,61 @@ import { useContext } from 'react';
 import EmptyMenuClient from './EmptyMenuClient.jsx';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { checkIfProductIsClicked } from './helper';
-import { IMAGE_COMMING_SOON } from '../../../../../../enums/product';
-import { findObjectById } from '../../../../../utils/array';
+import {
+	EMPTY_PRODUCT,
+	IMAGE_COMMING_SOON,
+} from '../../../../../../enums/product';
+import { isEmpty } from '../../../../../utils/array';
+
 export default function Menu() {
 	const {
 		menu,
 		isModeAdmin,
-		resetMenu,
 		handleDelete,
+		resetMenu,
 		productSelected,
 		setProductSelected,
-		setisCollapsed,
-		setcurrentTabSelected,
-		titleEditRef,
 		handleAddToBasket,
+		handleDeleteBasketProduct,
+		handleProductSelected,
 	} = useContext(OrderContext);
+	// state
 
-	const handleClick = async (idProductSelected) => {
-		if (isModeAdmin) setisCollapsed(false);
-		setcurrentTabSelected('edit');
-		const productClickedOn = findObjectById(idProductSelected, menu);
-		await setProductSelected(productClickedOn);
-		titleEditRef.current.focus();
+	// comportements (gestionnaires d'événement ou "event handlers")
+	const handleCardDelete = (event, idProductToDelete) => {
+		event.stopPropagation();
+		handleDelete(idProductToDelete);
+		handleDeleteBasketProduct(idProductToDelete);
+		idProductToDelete === productSelected.id &&
+			setProductSelected(EMPTY_PRODUCT);
 	};
-
-	if (menu.length === 0 && isModeAdmin)
-		return <EmptyMenuAdmin onClick={resetMenu} />;
-
-	if (menu.length === 0 && !isModeAdmin) return <EmptyMenuClient />;
 
 	const handleAddButton = (event, idProductToAdd) => {
 		event.stopPropagation();
 		handleAddToBasket(idProductToAdd);
 	};
 
+	// affichage
+	if (isEmpty(menu)) {
+		if (!isModeAdmin) return <EmptyMenuClient />;
+		return <EmptyMenuAdmin onReset={resetMenu} />;
+	}
+
 	return (
-		// Map destructuring menu + hydratation du component
-		<MenuStyled>
-			{menu.map(({ id, imageSource, price, title }) => {
+		<MenuStyled className="menu">
+			{menu.map(({ id, title, imageSource, price }) => {
 				return (
 					<Card
 						key={id}
 						title={title}
 						imageSource={imageSource ? imageSource : IMAGE_COMMING_SOON}
 						leftDescription={formatPrice(price)}
-						onDelete={() => handleDelete(id)}
-						onClick={() => handleClick(id)}
 						hasDeleteButton={isModeAdmin}
+						onDelete={(event) => handleCardDelete(event, id)}
+						onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+						isHoverable={isModeAdmin}
 						isSelected={checkIfProductIsClicked(id, productSelected.id)}
 						onAdd={(event) => handleAddButton(event, id)}
-						isHoverable={isModeAdmin}
 					/>
 				);
 			})}

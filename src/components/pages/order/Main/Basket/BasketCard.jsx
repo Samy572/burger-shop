@@ -140,16 +140,14 @@ const BasketCardStyled = styled.div`
 	}
 	&:hover {
 		.delete-button {
-			display: flex;
 			position: absolute;
-			box-sizing: border-box;
-			top: -20px;
+			top: -25px;
 			right: 0;
 			bottom: 0;
 			width: 76px;
 			border-top-right-radius: ${theme.borderRadius.round};
 			border-bottom-right-radius: ${theme.borderRadius.round};
-			padding: 10px;
+			padding: 0px;
 			margin: 0;
 			display: flex;
 			align-items: center;
@@ -159,6 +157,7 @@ const BasketCardStyled = styled.div`
 			cursor: pointer;
 
 			.icon {
+				position: absolute;
 				width: ${theme.fonts.size.P3};
 				height: ${theme.fonts.size.P3};
 			}
