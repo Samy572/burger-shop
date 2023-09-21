@@ -1,5 +1,19 @@
-import { css } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import { theme } from '.';
+
+export const fadeInFromRight = keyframes`
+
+from{
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	transform: translateX(100%);
+}
+to{
+	opacity: 1;
+	transform: translateX(0);
+}
+`;
 
 export const adminAnimation = css`
 	.admin-appear {
