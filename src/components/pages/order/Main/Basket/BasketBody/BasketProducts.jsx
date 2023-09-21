@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BasketCard from '../BasketCard';
+import BasketCard from './BasketCard';
 import { IMAGE_COMMING_SOON } from '../../../../../../../enums/product';
 import { findObjectById } from '../../../../../../utils/array';
 import OrderContext from '../../../../../../context/OrderContext';

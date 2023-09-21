@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../../../../theme';
+import { theme } from '../../../../../../theme';
 import { MdDeleteForever } from 'react-icons/md';
-import { formatPrice } from '../../../../../utils/math';
+import { formatPrice } from '../../../../../../utils/math';
 
 export default function BasketCard({
 	title,
