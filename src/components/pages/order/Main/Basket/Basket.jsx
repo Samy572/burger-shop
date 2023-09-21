@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import BasketHeader from './BasketHeader/BasketHeader';
-import BasketFooter from './BasketFooter';
+import BasketFooter from './BasketFooter/BasketFooter.jsx';
 import { theme } from '../../../../../theme';
 import BasketBody from './BasketBody/BasketBody';
 export default function Basket() {

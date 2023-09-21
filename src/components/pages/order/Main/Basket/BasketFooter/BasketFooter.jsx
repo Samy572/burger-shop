@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import Header from '../../../../../reusable-ui/Header';
 import { theme } from '../../../../../../theme';
 
-export default function Footer() {
+export default function BasketFooter() {
 	return (
 		<Header>
-			<BasketFooter>
+			<BasketFooterStyled>
 				<span>Codé avec 🧡 et React.JS</span>
-			</BasketFooter>
+			</BasketFooterStyled>
 		</Header>
 	);
 }
 
-const BasketFooter = styled.div`
+const BasketFooterStyled = styled.div`
 	height: 100%;
 	width: 100%;
 	display: flex;
