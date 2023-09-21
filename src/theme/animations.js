@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { theme } from '.';
 
 export const adminAnimation = css`
 	.admin-appear {
@@ -8,6 +9,53 @@ export const adminAnimation = css`
 	.admin-appear-active {
 		transform: translateY(0%);
 		opacity: 1;
-		transition: all 0.5s;
+		transition: all ${theme.animation.speed.slow};
+	}
+`;
+
+// Pour le premier élément ajouter la classe appear true à transition group
+export const basketAnimation = css`
+	.animation-basket-appear {
+		.transition {
+			opacity: 0;
+			transform: translateX(100px);
+		}
+	}
+
+	.animation-basket-appear-active {
+		.transition {
+			transition: ${theme.animation.speed.quick};
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	// Phase de mounting
+	.animation-basket-enter {
+		.transition {
+			opacity: 0;
+			transform: translateX(100px);
+		}
+	}
+	.animation-basket-enter-active {
+		.transition {
+			opacity: 1;
+			transform: translateX(0);
+			transition: ${theme.animation.speed.quick};
+		}
+	}
+
+	// Phase de unmonting
+
+	.animation-basket-exit {
+		.transition {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	.animation-basket-exit-active {
+		opacity: 0;
+		transform: translateX(-100%);
+		transition: ${theme.animation.speed.quick};
 	}
 `;

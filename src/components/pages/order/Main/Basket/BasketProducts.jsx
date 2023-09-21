@@ -6,6 +6,7 @@ import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 import { checkIfProductIsClicked } from '../Menu/helper';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { basketAnimation } from '../../../../../theme/animations';
 
 export default function BasketProducts() {
 	const {
@@ -29,7 +30,7 @@ export default function BasketProducts() {
 					const menuProduct = findObjectById(basketProduct.id, menu);
 					return (
 						<CSSTransition
-							classNames={'animation'}
+							classNames={'animation-basket'}
 							key={basketProduct.id}
 							timeout={500}
 							appear={true}
@@ -70,52 +71,6 @@ const BasketProductsStyled = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	// Pour le premier élément ajouter la classe appear true à transition group
-
-	.animation-appear {
-		.transition {
-			opacity: 0;
-			transform: translateX(100px);
-		}
-	}
-
-	.animation-appear-active {
-		.transition {
-			transition: 0.25s;
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	// Phase de mounting
-	.animation-enter {
-		.transition {
-			opacity: 0;
-			transform: translateX(100px);
-		}
-	}
-	.animation-enter-active {
-		.transition {
-			opacity: 1;
-			transform: translateX(0);
-			transition: 0.25s;
-		}
-	}
-
-	// Phase de unmonting
-
-	.animation-exit {
-		.transition {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	.animation-exit-active {
-		opacity: 0;
-		transform: translateX(-100%);
-		transition: 0.25s;
-	}
-
 	.basket-card {
 		margin: 10px 16px;
 		box-sizing: border-box;
@@ -126,4 +81,5 @@ const BasketProductsStyled = styled.div`
 			margin-bottom: 20px;
 		}
 	}
+	${basketAnimation}
 `;
