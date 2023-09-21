@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../../../../theme';
+import { theme } from '../../../../../../theme';
 import { MdDeleteForever } from 'react-icons/md';
-import { formatPrice } from '../../../../../utils/math';
+import { formatPrice } from '../../../../../../utils/math';
+import CasinoEffect from '../../../../../reusable-ui/CasinoEffect';
 
 export default function BasketCard({
 	title,
@@ -35,7 +36,7 @@ export default function BasketCard({
 					<span className="price">{formatPrice(price)}</span>
 				</div>
 				<div className="quantity">
-					<span>x {quantity}</span>
+					<CasinoEffect count={`x ${quantity}`} />
 				</div>
 			</div>
 		</BasketCardStyled>
@@ -103,10 +104,8 @@ const BasketCardStyled = styled.div`
 				/* background: yellow; */
 				font-family: ${theme.fonts.family.stylish};
 				font-size: ${theme.fonts.size.P3};
-				line-height: 32px;
 				font-weight: ${theme.fonts.weights.bold};
 				color: ${theme.colors.dark};
-				/* sans cette div avec "min-width: 0", l'ellipsis ne fonctionne pas dans un span : https://semicolon.dev/tutorial/css/text-overflow-ellipsis-doesnt-work#:~:text=If%20your%20text%2Doverflow%20is,Grid%20or%20on%20a%20Table. */
 				min-width: 0;
 				span {
 					overflow: hidden;
@@ -126,15 +125,11 @@ const BasketCardStyled = styled.div`
 		}
 
 		.quantity {
-			margin: 0;
-			box-sizing: border-box;
-			/* border: 1px solid lightblue; */
-			/* background: lightblue; */
+			position: absolute;
+			right: 10px;
+			top: -8px;
 			font-weight: ${theme.fonts.weights.medium};
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			margin-right: 20px;
+
 			font-size: ${theme.fonts.size.SM};
 		}
 	}

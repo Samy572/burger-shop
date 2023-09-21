@@ -20,6 +20,7 @@ export default function AdminPanel() {
 
 const AdminPanelStyled = styled.div`
 	border: solid 1px;
+	overflow: none;
 	height: 250px;
 	background-color: ${theme.colors.background_white};
 	border: 1px solid ${theme.colors.greyLight};

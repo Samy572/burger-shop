@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { theme } from '../../../../../theme';
-import Header from '../../../../reusable-ui/Header';
+import { theme } from '../../../../../../theme';
+import Header from '../../../../../reusable-ui/Header';
 import { useContext } from 'react';
-import OrderContext from '../../../../../context/OrderContext';
-import { formatPrice } from '../../../../../utils/math';
-import { calculateSumToPay } from './helper';
+import OrderContext from '../../../../../../context/OrderContext';
+import { formatPrice } from '../../../../../../utils/math';
+import { calculateSumToPay } from './helper.jsx';
+import CasinoEffect from '../../../../../reusable-ui/CasinoEffect';
 
 export default function Total() {
 	const { basket, menu } = useContext(OrderContext);
@@ -12,15 +13,15 @@ export default function Total() {
 	const sumToPay = calculateSumToPay(basket, menu);
 	return (
 		<Header>
-			<TotalStyled>
+			<BasketHeader>
 				<span className="total">Total</span>
-				<span className="amount">{formatPrice(sumToPay)}</span>
-			</TotalStyled>
+				<CasinoEffect count={formatPrice(sumToPay)} />
+			</BasketHeader>
 		</Header>
 	);
 }
 
-const TotalStyled = styled.div`
+const BasketHeader = styled.div`
 	display: flex;
 	width: 100%;
 	height: 100%;
