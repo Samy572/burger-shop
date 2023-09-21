@@ -3,7 +3,7 @@ import AdminTabs from './AdminTabs.jsx';
 import AdminPanel from './AdminPanel.jsx';
 import { useContext } from 'react';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
-import { fadeInFromRight } from '../../../../../../theme/animations.js';
+import { fadeInRight } from '../../../../../../theme/animations.js';
 import { theme } from '../../../../../../theme/index.js';
 
 export default function Admin() {
@@ -23,5 +23,5 @@ const AdminStyled = styled.div`
 	right: 0;
 	z-index: 2;
 
-	animation: ${fadeInFromRight} ${theme.animation.speed.slow} ease-out;
+	animation: ${fadeInRight} ${theme.animation.speed.slow} ease-out;
 `;

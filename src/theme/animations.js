@@ -100,7 +100,7 @@ export const menuAnimation = css`
 	}
 `;
 
-export const fadeInFromRight = keyframes`
+export const fadeInRight = keyframes`
 from{
 		transform: translateX(100%);
 		opacity: 0;
