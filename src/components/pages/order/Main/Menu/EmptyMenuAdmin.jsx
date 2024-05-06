@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import PrimaryButton from '../../../../reusable-ui/PrimaryButton.jsx';
 import { theme } from '../../../../../theme/index.js';
 
-export default function EmptyMenuAdmin({ onClick }) {
+export default function EmptyMenuAdmin({ onReset }) {
 	return (
 		<EmptyMenuStyled>
 			<span className="title"> Pas de produit</span>
 			<span className="description">
 				Cliquez ci-dessous pour le réinitialiser
 			</span>
-			<PrimaryButton label={'Générer de nouveaux produits'} onClick={onClick} />
+			<PrimaryButton label={'Générer de nouveaux produits'} onClick={onReset} />
 		</EmptyMenuStyled>
 	);
 }
