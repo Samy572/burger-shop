@@ -30,6 +30,7 @@ const normalStyle = css`
 	border: ${theme.borderRadius.subtle} solid red;
 	display: flex;
 	justify-content: center;
+	cursor: pointer;
 	align-items: center;
 	position: relative;
 	white-space: nowrap;

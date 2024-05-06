@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { theme } from '../../../theme';
 
 const LoginForm = () => {
-	const [inputValue, setInputValue] = useState('Sam');
+	const [inputValue, setInputValue] = useState('');
 	const navigate = useNavigate();
 
 	const handleChange = (event) => {
@@ -29,7 +29,7 @@ const LoginForm = () => {
 				className="input-login"
 				value={inputValue}
 				onChange={handleChange}
-				Icon={<BsPersonCircle />}
+				Icon={<BsPersonCircle size={25} />}
 				placeholder={'entrer votre prénom...'}
 				required
 				version="normal"
